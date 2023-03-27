@@ -1,7 +1,7 @@
 <?php
 require_once('../config/database.php');
 require_once('../app/routes.php');
-require_once('../app/views/partital/header.php');
+require_once('../app/views/share/header.php');
 
 $route = $_GET['route'] ?? '/';
 if (isset($routes[$route])) {

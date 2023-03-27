@@ -5,6 +5,7 @@ class AccountController {
         unset($_SESSION['UserId']);
         unset($_SESSION['Error']);
         unset($_SESSION['Avatar']);
+        unset($_SESSION['cart']);
         header('Location: ?route=login');   
         exit;
     }
@@ -150,6 +151,25 @@ class AccountController {
             // echo "Sorry, there was an error when uploading your file.";
             return 0;
         }
+        }
+    }
+
+    function checkRole(){
+        if (isset($_SESSION['UserId']) == false) {
+            // Nếu người dùng chưa đăng nhập thì chuyển hướng website sang trang đăng nhập
+            header('Location: ?route=login');
+        }else {
+            if (isset($_SESSION['permision']) == true) {
+                // Ngược lại nếu đã đăng nhập
+                $permission = $_SESSION['permision'];
+                // Kiểm tra quyền của người đó có phải là admin hay không
+                if ($permission == '0') {
+                    // Nếu không phải admin thì xuất thông báo
+                    echo "Bạn không đủ quyền truy cập vào trang này<br>";
+                    echo "<a href='?'>Click để về lại trang chủ</a>";
+                    exit();
+                }
+            }
         }
     }
     

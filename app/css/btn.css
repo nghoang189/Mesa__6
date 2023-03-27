@@ -86,7 +86,12 @@
         border-radius: 10px;
         box-shadow: 0 25px 50px -14px rgb(33 77 163 / 20%);
     }
-    
+    .card-title{
+        color: #5a5bd8;
+    }
+    .label-input100{
+        color: #5a5bd8;
+    }
     .form-label {
         color: #5a5bd8;
     }
@@ -117,3 +122,5 @@
         padding-top: 10px;
         color: #5a5bd8;
     }
+
+    

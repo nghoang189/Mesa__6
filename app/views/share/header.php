@@ -83,6 +83,10 @@
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light" >
     <div class="container-fluid">
+        <a class="navbar-brand" href="?">
+            <img  src="../app/images/logo.png" width="auto" height="70" class="d-inline-block align-top" alt=""/>
+        </a>
+
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -94,10 +98,10 @@
                     <a class="nav-link" href="?">Home</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="?route=danh-sach">List</a>
+                    <a class="nav-link" href="?route=danh-sach">Shop</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="?route=dang-ky">Intern Register</a>
+                    <a class="nav-link" href="?route=dang-ky">Add Product</a>
                 </li>
                 <li class="nav-item active">
                     <a class="nav-link" href="?route=view-cart">Cart</a>
@@ -115,22 +119,10 @@
                         }
                         else
                         {
-                            echo "<a class='nav-link' href='?route=login'>Login</a>";                           
+                            echo "<a class='nav-link' href='?route=login'>Login</a>";                          
                         }
-                    ?>                   
-                </li>            
-                <li class="avatar active">
-                    <?php
-                        if(isset($_SESSION['UserId']))
-                        {
-                            $avatar = $_SESSION['Avatar'] ?? "avatar.jpg";                       
-                            echo "<a href='?route=edit-avatar'><img style='width: 55px; padding-left:10px' src='../app/images/".$avatar."' alt='avatar'/></a>";
-                        }                     
-                    ?>               
-                </li>
+                    ?></li>
             </ul>
-            
-
         </div>
     </div>
 </nav>

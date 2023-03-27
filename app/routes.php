@@ -15,8 +15,7 @@ $routes = [
   'cap-nhat' => [
     'controller' => 'PhieuDangKyController',
     'action' => 'suaphieu'
-  ]
-  ,
+  ],
   'add' => [
     'controller' => 'PhieuDangKyController',
     'action' => 'createPhieuDangKy'
@@ -68,6 +67,14 @@ $routes = [
   'delete-ajax' => [
     'controller' => 'PhieuDangKyController',
     'action' => 'deleteAjax'
+  ],
+  'checkout' => [
+    'controller' => 'PhieuDangKyController',
+    'action' => 'checkOut'
+  ],
+  'view-product' => [
+    'controller' => 'PhieuDangKyController',
+    'action' => 'viewProduct'
   ]
 ];
 ?>

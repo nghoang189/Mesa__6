@@ -1,0 +1,32 @@
+.input-text:focus{
+    box-shadow: -3px -3px 10px #5a5bd8;
+    -moz-box-shadow: -3px -3px 10px #5a5bd8;
+    -webkit-box-shadow: -3px -3px 10px #5a5bd8;
+    -o-box-shadow: -3px -3px 10px #5a5bd8;
+    -ms-box-shadow: -3px -3px 10px #5a5bd8;
+    border-color:#5a5bd8;
+    outline: 0px;
+}
+
+.form-control {
+    display: block;
+    border: 1px solid #5a5bd8;
+    border-radius: 10px;
+    margin-left: 60px;
+}
+
+.search-btn{
+    border: 1px solid #5a5bd8;
+    border-radius: 0px 10px 10px 0px;
+    margin-right: -3px;
+}
+
+.search-btn:hover{
+    box-shadow: 3px -3px 10px #5a5bd8;
+    -moz-box-shadow: 3px -3px 10px #5a5bd8;
+    -webkit-box-shadow: 3px -3px 10px #5a5bd8;
+    -o-box-shadow: 3px -3px 10px #5a5bd8;
+    -ms-box-shadow: 3px -3px 10px #5a5bd8;
+    border-color:#5a5bd8;
+    outline: 0px;
+}

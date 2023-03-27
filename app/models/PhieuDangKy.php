@@ -7,16 +7,16 @@ class PhieuDangKy {
   }
 
   //tao phieu dang ky
-  public static function create($hoten, $chuyennganh, $congty) {
+  public static function create($hoten, $chuyennganh, $congty, $image) {
     global $pdo;
     
-    $sql = "INSERT INTO phieudangkythuctap (HoTen, ChuyenNganh, CongTy) VALUES (:hoten, :chuyennganh, :congty)";
+    $sql = "INSERT INTO phieudangkythuctap (HoTen, ChuyenNganh, CongTy, Image) VALUES (:hoten, :chuyennganh, :congty, :image)";
     $stmt = $pdo->prepare($sql);
-   
 
     $stmt->bindParam(':hoten', $hoten);
     $stmt->bindParam(':chuyennganh', $chuyennganh);
     $stmt->bindParam(':congty', $congty);
+    $stmt->bindParam(':image', $image);
 
     return $stmt->execute();
   }
@@ -36,12 +36,11 @@ class PhieuDangKy {
     return $stmt->execute();
   }
 
-  public static function find($id)
-    {
+  public static function find($id){
       global $pdo;
       $stmt = $pdo->prepare('SELECT * FROM phieudangkythuctap WHERE MaSV =:id');
       $stmt->bindParam(':id', $id);
       $stmt->execute();
       return $stmt->fetch(PDO::FETCH_ASSOC);
-    }
+  }
 }
