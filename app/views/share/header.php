@@ -103,12 +103,12 @@
                     <a class="nav-link" href="?route=danh-sach">Shop</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="?route=dang-ky">Add Product</a>
+                    <a class="nav-link" href="?route=admin">Admin</a>
                 </li>
                 <li class="nav-item active">
                     <a class="nav-link" href="?route=view-cart">Cart</a>
                 </li>
-                <li class="nav-item active">
+                <li class="nav-item active"></li>
                     <a  class="nav-link" href="?route=register">Register</a>
                 </li>
                 <li class="nav-item active">
