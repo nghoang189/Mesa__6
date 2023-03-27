@@ -78,12 +78,14 @@ class PhieuDangKyController {
         else if(isset($_GET['idPhieu'])){
             $masoPhieu = $_GET['idPhieu'];
             $phieuDangky = PhieuDangKy::find($masoPhieu);
-
             if(!empty($_SESSION['cart'])){
                 $acol = array_column($_SESSION['cart'], 'idPhieu');
 
                 if(in_array($masoPhieu, $acol)){
                     $_SESSION['cart'][$masoPhieu]['soluong'] += 1;
+                    $price = $_SESSION['cart'][$masoPhieu]['price'];
+                    $soluong = $_SESSION['cart'][$masoPhieu]['soluong'];
+                    $_SESSION['cart'][$masoPhieu]['price'] = $price*$soluong;
                 }else{
                     $item = [
                         'idPhieu' => $_GET['idPhieu'],
