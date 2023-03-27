@@ -61,10 +61,26 @@
             -webkit-user-select: none;
             touch-action: manipulation;
         }
+        .container-login101 {
+            width: 100%;  
+            min-height: 100vh;
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            /* align-items: center; */
+            padding: 15px;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+        }
   </style>
-
+<div class="container-login101" style="background-image: url('../app/images/bg-01.jpg');">        
   <main>
-    <div class="container">        
+    <div class="container" >        
         <!--Section: Block Content-->
         <section class="mt-5 mb-4">
             <!--Grid row-->
@@ -101,7 +117,15 @@
                                                 <a href="?route=delete-cart-item&idPhieu=<?=$cart['idPhieu'];?>" type="button" class="card-link-secondary small text-uppercase mr-3"><i
                                                         class="fas fa-trash-alt mr-1"></i> Remove item </a>
                                             </div>
-                                            <p class="mb-0" style="font-size: 18px;" ><?= $cart['price'];?><span><strong>₫<span></span></strong></span></p>
+                                            <p class="mb-0" style="font-size: 18px;" >
+
+                                            <?php                                      
+                                              $price = $cart['price']*$cart['soluong'];
+                                              echo number_format($price, 0, ',', '.');                                                                                      
+                                            ?>
+
+                                            <span><strong>₫<span></span></strong></span></p>
+                                            <!-- <p class="mb-0" style="font-size: 18px;" ><?= $cart['price'];?><span><strong>₫<span></span></strong></span></p> -->
                                         </div>
                                     </div>
                                 </div>
@@ -127,7 +151,18 @@
                             <ul class="list-group list-group-flush">
                                 <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
                                     Amount Payable
-                                    <span>₫<span th:text="${total}"></span></span>
+                                    <span>
+                                    <?php
+                                      $totalPrice = 0;
+                                      if (isset($_SESSION['cart'])) :
+                                        foreach ($_SESSION['cart'] as $cart) :                                             
+                                          $price =$cart['price']*$cart['soluong'];
+                                          $totalPrice += $price;                                  
+                                        endforeach;
+                                        echo number_format($totalPrice, 0, ',', '.');                                                                                      
+                                      endif;
+                                    ?>                                    
+                                    ₫<span></span></span>
                                 </li>
                                 <li class="list-group-item d-flex justify-content-between align-items-center px-0">
                                     Shipping
@@ -137,10 +172,23 @@
                                     <div>
                                         <strong>The total amount of</strong>
                                         <strong>
-                                            <p class="mb-0">(including VAT)</p>
+                                            <p class="mb-0">(including 10% VAT)</p>
                                         </strong>
                                     </div>
-                                    <span><strong>₫<span></span></strong></span>
+                                    <span><strong>
+                                    <?php
+                                      $vatPrice = 0;
+                                      $totalPrice = 0;
+                                      if (isset($_SESSION['cart'])) :
+                                        foreach ($_SESSION['cart'] as $cart) :                                             
+                                          $price =$cart['price']*$cart['soluong'];
+                                          $totalPrice += $price;                                  
+                                        endforeach;
+                                        $vatPrice = $totalPrice+($totalPrice*10)/100;
+                                        echo number_format($vatPrice, 0, ',', '.');                                                                                      
+                                      endif;
+                                    ?>
+                                    ₫<span></span></strong></span>
                                 </li>
                             </ul>
                             <a href="?route=checkout" class="btn btn-primary btn-block waves-effect waves-light">Checkout</a>
@@ -155,4 +203,5 @@
         <!--Section: Block Content-->
     </div> 
 </main>
+</div>
   </html>           

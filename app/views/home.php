@@ -139,6 +139,7 @@
         include_once('share/header.php');
     ?>
     <body>
+        
     <div class="jumbotron text-center">
         <h1 class="display-4">Welcome </h1>
         <p>Have a nice day !</p>

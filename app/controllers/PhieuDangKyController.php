@@ -83,9 +83,6 @@ class PhieuDangKyController {
 
                 if(in_array($masoPhieu, $acol)){
                     $_SESSION['cart'][$masoPhieu]['soluong'] += 1;
-                    $price = $_SESSION['cart'][$masoPhieu]['price'];
-                    $soluong = $_SESSION['cart'][$masoPhieu]['soluong'];
-                    $_SESSION['cart'][$masoPhieu]['price'] = $price*$soluong;
                 }else{
                     $item = [
                         'idPhieu' => $_GET['idPhieu'],

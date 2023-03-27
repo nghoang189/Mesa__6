@@ -26,13 +26,31 @@
             -webkit-user-select: none;
             touch-action: manipulation;
         }
+        .container-login101 {
+            width: 100%;  
+            min-height: 100vh;
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            /* align-items: center; */
+            padding: 15px;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+        }
 </style>
 <body>
+<div class="container-login101" style="background-image: url('../app/images/bg-01.jpg');">
+
 <div class="container">
 
     <!--Section: Block Content-->
     <section class="mt-5 mb-4">
-        <form action="" method="post" th:action="@{/pay}" th:object="${orderDTO}">
+        <form action="" method="post">
             <!--Grid row-->
             <div class="row">
                 <!--Grid column left-->
@@ -161,7 +179,18 @@
                             <ul class="list-group list-group-flush">
                                 <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
                                     Amount Payable
-                                    <span>₫<span th:text="${total}"></span></span>
+                                    <span>
+                                    <?php
+                                        $totalPrice = 0;
+                                        if (isset($_SESSION['cart'])) :
+                                            foreach ($_SESSION['cart'] as $cart) :                                             
+                                                $price =$cart['price']*$cart['soluong'];
+                                                $totalPrice += $price;                                  
+                                            endforeach;
+                                            echo number_format($totalPrice, 0, ',', '.');                                                                                      
+                                        endif;
+                                    ?>                
+                                    ₫<span th:text="${total}"></span></span>
                                 </li>
                                 <li class="list-group-item d-flex justify-content-between align-items-center px-0">
                                     Shipping
@@ -174,7 +203,20 @@
                                             <p class="mb-0">(including VAT)</p>
                                         </strong>
                                     </div>
-                                    <span><strong>₫<span th:text="${total}"></span></strong></span>
+                                    <span><strong>
+                                    <?php
+                                        $vatPrice = 0;
+                                        $totalPrice = 0;
+                                        if (isset($_SESSION['cart'])) :
+                                            foreach ($_SESSION['cart'] as $cart) :                                             
+                                                $price =$cart['price']*$cart['soluong'];
+                                                $totalPrice += $price;                                  
+                                            endforeach;
+                                                $vatPrice = $totalPrice+($totalPrice*10)/100;
+                                            echo number_format($vatPrice, 0, ',', '.');                                                                                      
+                                        endif;
+                                    ?>
+                                    ₫<span th:text="${total}"></span></strong></span>
                                 </li>
                             </ul>
 
@@ -219,6 +261,7 @@
     <!--Section: Block Content-->
 
 
+</div>                                    
 </div>
 
 

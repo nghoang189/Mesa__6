@@ -42,7 +42,7 @@
     transition-delay:all 0.25s;
   }
 
-  .btn-primary{
+  .btn-primary, .btn-warning, .btn-danger{
             border: none;
             outline: none;
             color: black;
@@ -55,20 +55,7 @@
             -webkit-user-select: none;
             touch-action: manipulation;
         }
-        .btn-danger{
-            border: none;
-            outline: none;
-            color: black;
-            cursor: pointer;
-            position: relative;
-            color: rgb(255, 255, 255);
-            z-index: 0;
-            border-radius: 10px;
-            user-select: none;
-            -webkit-user-select: none;
-            touch-action: manipulation;
-        }
-    
+        
         .list-group{
             max-width:200px;
             background:#00BFFF;
@@ -91,12 +78,33 @@
           margin-top: 20px;
           margin-bottom: 20px;
         }
+        .container-login101 {
+            width: 100%;  
+            min-height: 100vh;
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            /* align-items: center; */
+            padding: 15px;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+        }
+        .input-group-append{
+          background-color: white;
+          border-radius: 0px 10px 10px 0px;
+        }
 </style>
 <?php 
 include_once('share/header.php');
 ?>
 
 <body>
+<div class="container-login101" style="background-image: url('../app/images/bg-01.jpg');">>
 <div class="container" style="margin-top: 30px;">
     <div class="row">  
       <!-- <div class="col-sm-3">
@@ -130,7 +138,11 @@ include_once('share/header.php');
                     <div class="col-sm-7 d-flex justify-content-center">
                         <div class="card-body">
                             <h5 class="card-title" name="hoten" ><?=$phieu['HoTen'] ?></h5>
-                            <h4 name="chuyennganh" ><?=$phieu['ChuyenNganh']?>₫<span></span></h4>
+                            <h4 name="chuyennganh" >
+                              <?php
+                                echo number_format($phieu['ChuyenNganh'],0,',','.')
+                              ?>  
+                            ₫<span></span></h4>
                             <p name="congty" ><?=$phieu['CongTy']?></p>
                             <a href="?route=add-cart&idPhieu=<?=$phieu['MaSV']?>" class="btn btn-primary">Add to Cart</a>
                             <a href="?route=delete&idPhieu=<?=$phieu['MaSV']?>" class="btn btn-danger " style="margin-left: 10px;" >Delete</a>                         
@@ -143,6 +155,7 @@ include_once('share/header.php');
         <?php endforeach ?>
     </div>
 </div>
+        </div>
 </body>
 <script>
   $(document).on('click', '.delete-phieu', function() {
