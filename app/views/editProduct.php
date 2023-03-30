@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-	<title>Add Products</title>
+	<title>Edit Products</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!--===============================================================================================-->
@@ -50,28 +50,39 @@
 </style>
 
 <body>
-
 	<div class="limiter">
+		<?php
+		if (isset($_GET['idPhieu'])) {
+			global $pdo;
+			$prd_id = $_GET['idPhieu'];
+			$querry = "SELECT * FROM phieudangkythuctap WHERE MaSV=? LIMIT 1";
+			$statement = $pdo->prepare($querry);
+			$statement->bindParam(1, $prd_id, PDO::PARAM_INT);
+			$statement->execute();
+
+			$data = $statement->fetch(PDO::FETCH_ASSOC);
+		}
+		?>
 		<div class="container-login100" style="background-image: url('../app/images/bg-01.jpg');">
 			<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
-				<form class="login100-form validate-form" action="?route=add" method="post" enctype="multipart/form-data">
+				<form class="login100-form validate-form" action="?route=update-prd&idPhieu=<?= $data['MaSV'] ?>" method="post" enctype="multipart/form-data">
 					<span class="login100-form-title p-b-49">
-						Add Products
+						Edit Products
 					</span>
-
+					<!-- <input type="hidden" name="id" value="<?= $_POST['id'] ?>"> -->
 					<div class="wrap-input100 validate-input m-b-23" data-validate="Product's Name is required">
 						<span class="label-input100">Product's Name</span>
-						<input class="input101" type="text" name="hoten">
+						<input class="input101" type="text" id="hoten" name="hoten" value="<?= $data['HoTen'] ?>" required>
 					</div>
 
 					<div class="wrap-input100 validate-input m-b-23" data-validate="Price is required">
 						<span class="label-input100">Price</span>
-						<input class="input101" type="text" name="chuyennganh">
+						<input class="input101" type="text" id="chuyennganh" name="chuyennganh" value="<?= $data['ChuyenNganh'] ?>" required>
 					</div>
 
 					<div class="wrap-input100 validate-input  m-b-23" data-validate="Description is required">
 						<span class="label-input100">Description</span>
-						<textarea name="note" id="note" value="none" class="md-textarea form-control" rows="5"></textarea>
+						<textarea name="note" id="note" value="<?= $data['CongTy'] ?>" required class="md-textarea form-control" rows="5"><?= $data['CongTy'] ?></textarea>
 					</div>
 
 					<div class="wrap-input101 validate-input  m-b-23" data-validate="Product's Image is required">
@@ -91,34 +102,34 @@
 
 					<div class="wrap-input100 validate-input  m-b-23" data-validate="Description is required">
 						<span class="label-input100">Detail Description 1</span>
-						<textarea name="note1" id="note1" value="none" class="md-textarea form-control" rows="5"></textarea>
+						<textarea name="note1" id="note1" value="<?= $data['des1'] ?>" class="md-textarea form-control" rows="5"><?= $data['des1'] ?></textarea>
 					</div>
 
 					<div class="wrap-input100 validate-input  m-b-23" data-validate="Description is required">
 						<span class="label-input100">Detail Description 2</span>
-						<textarea name="note2" id="note2" value="none" class="md-textarea form-control" rows="5"></textarea>
+						<textarea name="note2" id="note2" value="<?= $data['des2'] ?>" class="md-textarea form-control" rows="5"><?= $data['des2'] ?></textarea>
 					</div>
 
 					<div class="wrap-input100 validate-input m-b-23" data-validate="Product's Name is required">
 						<span class="label-input100">Title Des 1</span>
-						<input class="input101" type="text" name="ttdes1">
+						<input class="input101" type="text" name="ttdes1" value="<?= $data['ttdes1'] ?>">
 					</div>
 
 					<div class="wrap-input100 validate-input m-b-23" data-validate="Product's Name is required">
 						<span class="label-input100">Title Des 2</span>
-						<input class="input101" type="text" name="ttdes2">
+						<input class="input101" type="text" name="ttdes2" value="<?= $data['ttdes2'] ?>">
 					</div>
 
 					<div class="wrap-input100 validate-input m-b-23" data-validate="Product's Name is required">
 						<span class="label-input100">Embed Code</span>
-						<input class="input101" type="text" name="embed">
+						<input class="input101" type="text" name="embed" value="<?= $data['embed'] ?>">
 					</div>
 
 					<div class="container-login100-form-btn">
 						<div class="wrap-login100-form-btn">
 							<div class="login100-form-bgbtn"></div>
 							<button class="login100-form-btn">
-								Add
+								Update
 							</button>
 						</div>
 					</div>

@@ -6,8 +6,6 @@
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-    <title>Store - Admin Page</title>
     <!--===============================================================================================-->
     <link rel="icon" type="image/png" href="../app/images/icons/favicon.ico" />
     <!--===============================================================================================-->
@@ -30,70 +28,86 @@
     <link rel="stylesheet" type="text/css" href="../app/css/util.css">
     <link rel="stylesheet" type="text/css" href="../app/css/main.css">
     <!--===============================================================================================-->
-    <link rel="stylesheet" href="../app/css/btn.css">
+
+    <title>Admin - Manage Users</title>
+    <style>
+        .btn-danger {
+            padding: 0.2em 0.8em;
+            border: none;
+            outline: none;
+            color: rgb(255, 255, 255);
+            background: red;
+            cursor: pointer;
+            position: relative;
+            z-index: 0;
+            border-radius: 10px;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+        }
+
+        .btn-warning {
+            padding: 0.2em 0.8em;
+            border: none;
+            outline: none;
+            color: black;
+            background: #FFCC00;
+            cursor: pointer;
+            position: relative;
+            z-index: 0;
+            border-radius: 10px;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+        }
+
+        .btn-primary {
+            border: none;
+            outline: none;
+            color: black;
+            cursor: pointer;
+            position: relative;
+            color: rgb(255, 255, 255);
+            z-index: 0;
+            border-radius: 10px;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+        }
+    </style>
 </head>
-<style>
-    .display-4 {
-        color: #5a5bd8;
-
-    }
-
-    .btn-primary {
-        border: none;
-        outline: none;
-        color: black;
-        cursor: pointer;
-        position: relative;
-        color: rgb(255, 255, 255);
-        z-index: 0;
-        border-radius: 10px;
-        user-select: none;
-        -webkit-user-select: none;
-        touch-action: manipulation;
-    }
-</style>
 
 <body>
-
-    <div class="jumbotron text-center">
-        <h1 class="display-4">Welcome back, Admin</h1>
-        <p>Easily manage your data from this <mark>Admin Page</mark></p>
-    </div>
     <div class="container-fluid">
-        <div class="row">
-            <div class="col-sm-3 pt-3">
-                <div class="card" style="background-color:white;">
-                    <div class="card-body">
-                        <h4 class="card-title">Account</h4>
-                        <p class="card-text">Manage all accounts section here.</p>
-                        <a href="?route=manage-user" class="card-link btn btn-primary">Manage</a>
 
-                    </div>
-                </div>
-            </div>
+        <a href="?route=register" style="margin: 20px 0" class="btn btn-primary">Add User</a>
+        <table class="table">
+            <thead class="thead-light">
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Full Name</th>
+                    <th scope="col">User Name</th>
+                    <!-- <th scope="col">Password</th> -->
+                    <th scope="col">Role</th>
+                    <th scope="col">Delete</th>
+                    <th scope="col">Update</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($userList as $user) : ?>
+                    <tr>
+                        <th scope="row"><?= $user['Id'] ?></th>
+                        <td style="width:300px; padding-right: 30px;"><?= $user['FullName'] ?></td>
+                        <td style="width:200px; padding-right: 40px;"><?= $user['UserName'] ?></td>
+                        <!-- <td style="width:500px; padding-right: 40px;" ><?= $user['Pass'] ?></td> -->
+                        <td style="width:200px; padding-right: 40px;"><?= $user['role'] ?></td>
+                        <td><a href="?route=delete-user&idUser=<?= $user['Id'] ?>" class="btn btn-danger">Delete</a></td>
+                        <td><a href="?route=edit-user&idUser=<?= $user['Id'] ?>" class="btn btn-warning">Edit</a></td>
 
-            <div class="col-sm-3 pt-3">
-                <div class="card" style="background-color:white;">
-                    <div class="card-body">
-                        <h4 class="card-title">Products</h4>
-                        <p class="card-text">Manage all products here.</p>
-                        <a href="?route=manage-prd" class="card-link btn btn-primary">Manage</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-3 pt-3">
-                <div class="card" style="background-color:white;">
-                    <div class="card-body">
-                        <h4 class="card-title">Orders</h4>
-                        <p class="card-text">Manage all orders from customers here.</p>
-                        <a href="?route=manage-order" class="card-link btn btn-primary">Manage</a>
-
-                    </div>
-                </div>
-            </div>
-
-        </div>
+                    </tr>
+                <?php endforeach ?>
+            </tbody>
+        </table>
     </div>
 
 

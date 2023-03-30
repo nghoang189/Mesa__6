@@ -1,6 +1,7 @@
 <?php
 
-class Admin{
+class Admin
+{
     public static function find($userName)
     {
         global $pdo;
@@ -10,13 +11,53 @@ class Admin{
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    public static function checkUser($userName, $pass)
+    public static function getAll()
     {
         global $pdo;
-        $stmt = $pdo->prepare("SELECT * FROM  `user` WHERE UserName ='".$userName."' AND Pass='".$pass."'");
-        $stmt->execute();
-        $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
-        $kq = $stmt->fetchAll();
-        return $kq;
+        $stmt = $pdo->query('SELECT * FROM user');
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public static function update($id, $userName, $fullName, $role)
+    {
+        global $pdo;
+        $sql = "UPDATE `user` SET `UserName` = '$userName', `FullName` = '$fullName',`role` = '$role'  WHERE `user`.`Id` = '$id'";
+        $stmt = $pdo->prepare($sql);
+        return $stmt->execute();
+    }
+
+    public static function getAllOrderList()
+    {
+        global $pdo;
+        $stmt = $pdo->query('SELECT * FROM orderlist');
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public static function createOrderDetail($orderid, $prdid, $prdname, $quantity, $unit, $image)
+    {
+        global $pdo;
+
+        $sql = "INSERT INTO orderdetail (orderid, prdid, prdname, quantity, unit, image) 
+                VALUES (:orderid, :prdid, :prdname, :quantity, :unit, :image);
+                SET @num:= 0;
+                UPDATE `orderdetail` SET `id` = @num:= (@num + 1);
+                ALTER TABLE `orderdetail` AUTO_INCREMENT = 1;";
+        $stmt = $pdo->prepare($sql);
+
+        $stmt->bindParam(':orderid', $orderid);
+        $stmt->bindParam(':prdid', $prdid);
+        $stmt->bindParam(':prdname', $prdname);
+        $stmt->bindParam(':quantity', $quantity);
+        $stmt->bindParam(':unit', $unit);
+        $stmt->bindParam(':image', $image);
+
+        return $stmt->execute();
+    }
+
+    public static function getOrderDetail($id)
+    {
+        global $pdo;
+        $stmt = $pdo->query('SELECT * FROM orderdetail WHERE orderid="' . $id . '"');
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 }

@@ -34,5 +34,15 @@ class User {
       return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
+    public static function delete($userId) {
+      global $pdo;
+      $sql = "DELETE FROM `user` WHERE `user`.`Id` = $userId;
+              SET @num:= 0;
+              UPDATE `user` SET `Id` = @num:= (@num + 1);
+              ALTER TABLE `user` AUTO_INCREMENT = 1;";
+      $stmt = $pdo->prepare($sql);
+      return $stmt->execute();
+    }
+
 }
 ?>

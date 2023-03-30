@@ -4,29 +4,29 @@ $routes = [
     'controller' => 'HomeController',
     'action' => 'index'
   ],
-  'dang-ky' => [
-    'controller' => 'PhieuDangKyController',
-    'action' => 'index'
+  'add-product' => [
+    'controller' => 'ProductController',
+    'action' => 'addProduct'
   ],
-  'danh-sach' => [
-    'controller' => 'PhieuDangKyController',
-    'action' => 'showPhieuDangKy'
+  'shop' => [
+    'controller' => 'ProductController',
+    'action' => 'showProduct'
   ],
-  'cap-nhat' => [
-    'controller' => 'PhieuDangKyController',
-    'action' => 'suaphieu'
+  'edit-prd' => [
+    'controller' => 'ProductController',
+    'action' => 'editProduct'
   ],
   'add' => [
-    'controller' => 'PhieuDangKyController',
-    'action' => 'createPhieuDangKy'
+    'controller' => 'ProductController',
+    'action' => 'createProduct'
   ],
-  'delete' => [
-    'controller' => 'PhieuDangKyController',
-    'action' => 'delete'
+  'delete-prd' => [
+    'controller' => 'ProductController',
+    'action' => 'deleteProduct'
   ],
-  'update' => [
-    'controller' => 'PhieuDangKyController',
-    'action' => 'updatePhieuDangKy'
+  'update-prd' => [
+    'controller' => 'ProductController',
+    'action' => 'updateProduct'
   ],
   'register' => [
     'controller' => 'AccountController',
@@ -45,35 +45,35 @@ $routes = [
     'action' => 'editAvatar'
   ],
   'add-cart' => [
-    'controller' => 'PhieuDangKyController',
+    'controller' => 'ProductController',
     'action' => 'addCart'
   ],
   'view-cart' => [
-    'controller' => 'PhieuDangKyController',
+    'controller' => 'ProductController',
     'action' => 'viewCart'
   ],
   'delete-cart-item' => [
-    'controller' => 'PhieuDangKyController',
+    'controller' => 'ProductController',
     'action' => 'deleteCart'
   ],
   'empty-cart' => [
-    'controller' => 'PhieuDangKyController',
+    'controller' => 'ProductController',
     'action' => 'deleteAllCart'
   ],
   'update-cart' => [
-    'controller' => 'PhieuDangKyController',
+    'controller' => 'ProductController',
     'action' => 'updateCart'
   ],
   'delete-ajax' => [
-    'controller' => 'PhieuDangKyController',
+    'controller' => 'ProductController',
     'action' => 'deleteAjax'
   ],
   'checkout' => [
-    'controller' => 'PhieuDangKyController',
+    'controller' => 'ProductController',
     'action' => 'checkOut'
   ],
   'view-product' => [
-    'controller' => 'PhieuDangKyController',
+    'controller' => 'ProductController',
     'action' => 'viewProduct'
   ],
   'admin' => [
@@ -83,6 +83,38 @@ $routes = [
   'manage-prd' => [
     'controller' => 'AdminController',
     'action' => 'manageProduct'
-  ]
+  ],
+  'manage-user' => [
+    'controller' => 'AdminController',
+    'action' => 'showUserList'
+  ],
+  'delete-user' => [
+    'controller' => 'AdminController',
+    'action' => 'deleteUser'
+  ],
+  'edit-user' => [
+    'controller' => 'AdminController',
+    'action' => 'editUser'
+  ],
+  'update-user' => [
+    'controller' => 'AdminController',
+    'action' => 'updateUser'
+  ],
+  'detail-prd' => [
+    'controller' => 'ProductController',
+    'action' => 'detailProduct'
+  ],
+  'order' => [
+    'controller' => 'ProductController',
+    'action' => 'createOrder'
+  ],
+  'manage-order' => [
+    'controller' => 'AdminController',
+    'action' => 'showOrderList'
+  ],
+  'order-detail' => [
+    'controller' => 'AdminController',
+    'action' => 'showOrderDetail'
+  ],
+
 ];
-?>

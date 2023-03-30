@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-	<title>Login</title>
+	<title>Admin - Edit Users</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!--===============================================================================================-->
@@ -28,6 +28,7 @@
 	<link rel="stylesheet" type="text/css" href="../app/css/main.css">
 	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="../app/css/btn.css">
+
 </head>
 <style>
 	.login-text {
@@ -39,49 +40,50 @@
 <body>
 
 	<div class="limiter">
+		<?php
+		if (isset($_GET['idUser'])) {
+			global $pdo;
+			$userId = $_GET['idUser'];
+			$querry = "SELECT * FROM `user` WHERE Id=? LIMIT 1";
+			$statement = $pdo->prepare($querry);
+			$statement->bindParam(1, $userId, PDO::PARAM_INT);
+			$statement->execute();
+
+			$data = $statement->fetch(PDO::FETCH_ASSOC);
+		}
+		?>
 		<div class="container-login100" style="background-image: url('../app/images/bg-01.jpg');">
 			<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
-				<form class="login100-form validate-form" action="?route=login" method="post">
+				<form class="login100-form validate-form" action="?route=update-user&idUser=<?= $data['Id'] ?>" method="post">
 					<span class="login100-form-title p-b-49">
-						Login
+						Edit User Information
 					</span>
 
-					<?php
-					if (isset($_SESSION['Error'])) {
-						$error = $_SESSION['Error'];
-						echo "<p class='text-right' style='color:red;' >$error</p>";
-					}
-					?>
-
-					<div class="wrap-input100 validate-input m-b-23" data-validate="Username is reauired">
-						<span class="label-input100">Username</span>
-						<input class="input100" type="text" name="UserName" placeholder="Type your Username">
+					<div class="wrap-input100 validate-input m-b-23" data-validate="Username is required">
+						<span class="label-input100">Full Name</span>
+						<input class="input100" type="text" name="FullName" value="<?= $data['FullName'] ?>" placeholder="Type User's Full Name">
 						<span class="focus-input100" data-symbol="&#xf206;"></span>
 					</div>
 
-					<div class="wrap-input100 validate-input" data-validate="Password is required">
-						<span class="label-input100">Password</span>
-						<input class="input100" type="password" name="Pass" placeholder="Type your Password">
-						<span class="focus-input100" data-symbol="&#xf190;"></span>
+					<div class="wrap-input100 validate-input m-b-23" data-validate="Username is required">
+						<span class="label-input100">Username</span>
+						<input class="input100" type="text" name="UserName" value="<?= $data['UserName'] ?>" placeholder="Type User's Username">
+						<span class="focus-input100" data-symbol="&#xf206;"></span>
 					</div>
 
-					<div class="text-right p-t-8 p-b-31">
-						<a href="#">
-							Forgot password?
-						</a>
+					<div class="wrap-input100 validate-input m-b-23" data-validate="Password is required">
+						<span class="label-input100">Role &nbsp; (1: Admin &nbsp;&nbsp; 0: User)</span>
+						<input class="input100" type="text" maxlength="1" name="role" value="<?= $data['role'] ?>" placeholder="Type 1 or 0">
+						<span class="focus-input100" data-symbol="&#xf190;"></span>
 					</div>
 
 					<div class="container-login100-form-btn">
 						<div class="wrap-login100-form-btn">
 							<div class="login100-form-bgbtn"></div>
 							<button class="login100-form-btn">
-								Login
+								Update
 							</button>
 						</div>
-					</div>
-
-					<div class="login-text">
-						<span> Don't have an account? <br> <a href="?route=register">Register here</a></span>
 					</div>
 				</form>
 			</div>

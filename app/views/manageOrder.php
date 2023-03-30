@@ -29,7 +29,7 @@
     <link rel="stylesheet" type="text/css" href="../app/css/main.css">
     <!--===============================================================================================-->
 
-    <title>Admin - Manage Products</title>
+    <title>Admin - Manage Users</title>
     <style>
         .btn-danger {
             padding: 0.2em 0.8em;
@@ -80,38 +80,42 @@
 <body>
     <div class="container-fluid">
 
-        <a href="?route=add-product" style="margin: 20px 0" class="btn btn-primary">Add Product</a>
-        <table class="table">
+        <!-- <a href="?route=register" style="margin: 20px 0" class="btn btn-primary">Add User</a> -->
+        <table class="table" style="margin-top: 80px;">
             <thead class="thead-light">
                 <tr>
                     <th scope="col">ID</th>
-                    <th scope="col">Product Name</th>
-                    <th scope="col">Price</th>
-                    <th scope="col">Description</th>
-                    <th scope="col">Preview</th>
-                    <th scope="col">Delete</th>
-                    <th scope="col">Update</th>
+                    <th scope="col">Order ID</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Phone</th>
+                    <th scope="col">State</th>
+                    <th scope="col">City</th>
+                    <th scope="col">Address</th>
+                    <th scope="col">Additional Info</th>
+                    <th scope="col">Total</th>
+                    <th scope="col">Detail</th>
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($productList as $phieu) : ?>
+                <?php foreach ($orderList as $order) : ?>
                     <tr>
-                        <th scope="row"><?= $phieu['MaSV'] ?></th>
-                        <td style="width:300px; padding-right: 30px;"><?= $phieu['HoTen'] ?></td>
-                        <td>
-                            <!-- <?= $phieu['ChuyenNganh'] ?> -->
+                        <th scope="row"><?= $order['id'] ?></th>
+                        <td style="width:100px; padding-right: 20px;"><?= $order['orderid'] ?></td>
+                        <td style="width:150px; padding-right: 20px;"><?= $order['name'] ?></td>
+                        <td style="width:100px; padding-right: 20px;"><?= $order['email'] ?></td>
+                        <td style="width:150px; padding-right: 20px;"><?= $order['sdt'] ?></td>
+                        <td style="width:150px; padding-right: 20px;"><?= $order['state'] ?></td>
+                        <td style="width:150px; padding-right: 20px;"><?= $order['city'] ?></td>
+                        <td style="width:250px; padding-right: 20px;"><?= $order['address'] ?></td>
+                        <td style="width:250px; padding-right: 20px;"><?= $order['addinfor'] ?></td>
+                        <td style="width:100px; padding-right: 20px;">
                             <?php
-                            $price = $phieu['ChuyenNganh'];
+                            $price = $order['total'];
                             echo number_format($price, 0, ',', '.');
                             ?>₫
                         </td>
-                        <td style="width:500px; padding-right: 40px;"><?= $phieu['CongTy'] ?></td>
-
-                        <td><img height="auto" width="150px" src="../app/images/<?= $phieu['Image'] ?>"></td>
-
-                        <td><a href="?route=delete-prd&idPhieu=<?= $phieu['MaSV'] ?>" class="btn btn-danger">Delete</a></td>
-                        <td><a href="?route=edit-prd&idPhieu=<?= $phieu['MaSV'] ?>" class="btn btn-warning">Edit</a></td>
-
+                        <td><a href="?route=order-detail&orderid=<?= $order['orderid'] ?>" class="btn btn-primary">Detail</a></td>
                     </tr>
                 <?php endforeach ?>
             </tbody>
