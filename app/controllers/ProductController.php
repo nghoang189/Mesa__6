@@ -195,7 +195,6 @@ class ProductController
                 } else {
                     $item = [
                         'idPhieu' => $_GET['idPhieu'],
-                        // 'userId' => $Product['MaSV'],
                         'soluong' => 1,
                         'ten' => $Product['HoTen'],
                         'image' => $Product['Image'],
@@ -206,7 +205,6 @@ class ProductController
             } else {
                 $item = [
                     'idPhieu' => $_GET['idPhieu'],
-                    // 'userId' => $Product['MaSV'],
                     'soluong' => 1,
                     'ten' => $Product['HoTen'],
                     'image' => $Product['Image'],
@@ -214,7 +212,6 @@ class ProductController
                 ];
                 $_SESSION['cart'][$masoPhieu] = $item;
             }
-            // $_SESSION['countCart'] = count($item['idPhieu']);
             header('Location: ?route=view-cart');
             exit;
         } else {
@@ -371,9 +368,12 @@ class ProductController
                 $addinfor = $_POST['note'];
                 $total = $_POST['total'];
                 $iddh = Product::createOrder($orderid, $name, $email, $sdt, $state, $city, $address, $addinfor, $total);
+                $_SESSION['orderid'] = $iddh;
                 foreach ($_SESSION['cart'] as $cart) {
                     Admin::createOrderDetail($iddh, $cart['idPhieu'], $cart['ten'], $cart['soluong'], $cart['price'], $cart['image']);
                 }
+                unset($_SESSION['cart']);
+                $getShowCart = Product::getShowCart($iddh);
                 require_once('../app/views/order.php');
             }
         }

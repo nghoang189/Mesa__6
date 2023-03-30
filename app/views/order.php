@@ -93,10 +93,10 @@ include_once('share/header.php');
                         <!-- Card -->
                         <div class="card wish-list mb-4">
                             <div class="card-body">
-                                <h5 class="form-label">Cart</h5>
+                                <h5 class="form-label">Order</h5>
                                 <?php
-                                if (isset($_SESSION['cart'])) :
-                                    foreach ($_SESSION['cart'] as $cart) :
+                                if (isset($_SESSION['orderid'])) :
+                                    foreach ($getShowCart as $cart) :
                                 ?>
                                         <div class="row mb-4" style="margin-top: 20px">
                                             <div class="col-md-5 col-lg-3 col-xl-3">
@@ -108,9 +108,9 @@ include_once('share/header.php');
                                                 <div>
                                                     <div class="d-flex justify-content-between">
                                                         <div>
-                                                            <input type="hidden" name="idPhieu" value="<?= $cart['idPhieu']; ?>">
-                                                            <h5 class="form-label"><?= $cart['ten']; ?></h5>
-                                                            <p class="mb-3 text-uppercase" style="margin-top: 20px;">Quantity: <span><?= $cart['soluong']; ?></span></p>
+                                                            <input type="hidden" name="id" value="<?= $cart['id']; ?>">
+                                                            <h5 class="form-label"><?= $cart['prdname']; ?></h5>
+                                                            <p class="mb-3 text-uppercase" style="margin-top: 20px;">Quantity: <span><?= $cart['quantity']; ?></span></p>
                                                         </div>
                                                     </div>
                                                     <div class="mt-5 d-flex justify-content-between align-items-center">
@@ -118,7 +118,7 @@ include_once('share/header.php');
                                                         </div>
                                                         <p class="mb-0" style="font-size: 18px;">
                                                             <?php
-                                                            $price = $cart['price'] * $cart['soluong'];
+                                                            $price = $cart['unit'] * $cart['quantity'];
                                                             echo number_format($price, 0, ',', '.');
                                                             ?>
                                                             <span><strong>₫<span></span></strong></span>
@@ -150,9 +150,9 @@ include_once('share/header.php');
                                         <span>
                                             <?php
                                             $totalPrice = 0;
-                                            if (isset($_SESSION['cart'])) :
-                                                foreach ($_SESSION['cart'] as $cart) :
-                                                    $price = $cart['price'] * $cart['soluong'];
+                                            if (isset($_SESSION['orderid'])) :
+                                                foreach ($getShowCart as $cart) :
+                                                    $price = $cart['unit'] * $cart['quantity'];
                                                     $totalPrice += $price;
                                                 endforeach;
                                                 echo number_format($totalPrice, 0, ',', '.');
@@ -175,13 +175,13 @@ include_once('share/header.php');
                                                 <?php
                                                 $vatPrice = 0;
                                                 $totalPrice = 0;
-                                                if (isset($_SESSION['cart'])) :
-                                                    foreach ($_SESSION['cart'] as $cart) :
-                                                        $price = $cart['price'] * $cart['soluong'];
+                                                if (isset($_SESSION['orderid'])) :
+                                                    foreach ($getShowCart as $cart) :
+                                                        $price = $cart['unit'] * $cart['quantity'];
                                                         $totalPrice += $price;
                                                     endforeach;
                                                     $vatPrice = $totalPrice + ($totalPrice * 10) / 100;
-                                                    $_SESSION['total'] = $vatPrice;
+                                                    // $_SESSION['total'] = $vatPrice;
                                                     echo number_format($vatPrice, 0, ',', '.');
                                                 endif;
                                                 ?>

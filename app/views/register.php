@@ -26,6 +26,8 @@
 	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="../app/css/util.css">
 	<link rel="stylesheet" type="text/css" href="../app/css/main.css">
+	<link rel="stylesheet" type="text/css" href="../app/css/loader.css">
+
 	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="../app/css/btn.css">
 
@@ -37,8 +39,10 @@
 	}
 </style>
 
-<body>
-
+<body class="preloading">
+	<!-- <div class="load">
+		<img src="../app/images/loader.gif" alt="">
+	</div> -->
 	<div class="limiter">
 		<div class="container-login100" style="background-image: url('../app/images/bg-01.jpg');">
 			<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
@@ -93,27 +97,29 @@
 			</div>
 		</div>
 	</div>
-
-
 	<div id="dropDownSelect1"></div>
-
-	<!--===============================================================================================-->
-	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
-	<!--===============================================================================================-->
-	<script src="vendor/animsition/js/animsition.min.js"></script>
-	<!--===============================================================================================-->
-	<script src="vendor/bootstrap/js/popper.js"></script>
-	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-	<!--===============================================================================================-->
-	<script src="vendor/select2/select2.min.js"></script>
-	<!--===============================================================================================-->
-	<script src="vendor/daterangepicker/moment.min.js"></script>
-	<script src="vendor/daterangepicker/daterangepicker.js"></script>
-	<!--===============================================================================================-->
-	<script src="vendor/countdowntime/countdowntime.js"></script>
-	<!--===============================================================================================-->
-	<script src="js/main.js"></script>
-
 </body>
+<!--===============================================================================================-->
+<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+<script src="vendor/animsition/js/animsition.min.js"></script>
+<!--===============================================================================================-->
+<script src="vendor/bootstrap/js/popper.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+<script src="vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+<script src="vendor/daterangepicker/moment.min.js"></script>
+<script src="vendor/daterangepicker/daterangepicker.js"></script>
+<!--===============================================================================================-->
+<script src="vendor/countdowntime/countdowntime.js"></script>
+<!--===============================================================================================-->
+<script src="js/main.js"></script>
+<script>
+	$(window).on('load', function(event) {
+		$('body').removeClass('preloading');
+		$('.load').delay(500).fadeOut('fast');
+	});
+</script>
 
 </html>

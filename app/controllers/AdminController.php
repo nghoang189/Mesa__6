@@ -85,6 +85,21 @@ class AdminController
         }
     }
 
+    public function showYourOrder()
+    {
+        if (isset($_SESSION['UserId']) == false) {
+            // Nếu người dùng chưa đăng nhập thì chuyển hướng website sang trang đăng nhập
+            header('Location: ?route=login');
+        } else if ($_SESSION['role'] == 1) {
+            $id = $_SESSION['orderid'];
+            $getShowCart = Product::getShowCart($id);
+            // $orderDetail = Admin::getOrderDetail($id);
+            require_once('../app/views/order.php');
+        } else {
+            header('Location: ?');
+        }
+    }
+
     function deleteUser()
     {
         if (isset($_SESSION['UserId']) == false) {

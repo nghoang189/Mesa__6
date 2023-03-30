@@ -106,11 +106,11 @@
                     <li class="nav-item active">
                         <a class="nav-link" href="?route=shop">Shop</a>
                     </li>
-                    <!-- <li class="nav-item active">
-                    <a class="nav-link" href="?route=admin">Admin</a>
-                </li> -->
                     <li class="nav-item active">
                         <a class="nav-link" href="?route=view-cart">Cart</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="?route=your-order">Your Order</a>
                     </li>
                     <li class="nav-item active">
                         <a class="nav-link" href="?route=register">Register</a>

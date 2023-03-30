@@ -97,7 +97,7 @@ class Product
                                             `Image5` = '$image5', `Image6` = '$image6', 
                                             `Image7` = '$image7',`Image8` = '$image8',
                                             `des1` = '$des1', `des2` = '$des2', 
-                                            `ttdes1` = '$ttdes1',`ttdes2` = '$ttdes2', `embed` = '$embed',   
+                                            `ttdes1` = '$ttdes1',`ttdes2` = '$ttdes2', `embed` = '$embed'   
             WHERE `phieudangkythuctap`.`MaSV` = '$id'";
     $stmt = $pdo->prepare($sql);
     return $stmt->execute();
@@ -145,5 +145,12 @@ class Product
 
     $stmt->execute();
     return $orderid;
+  }
+
+  public static function getShowCart($orderid)
+  {
+    global $pdo;
+    $stmt = $pdo->query('SELECT * FROM orderdetail WHERE orderid="' . $orderid . '"');
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
   }
 }

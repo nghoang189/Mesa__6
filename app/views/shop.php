@@ -30,6 +30,7 @@
   <!--===============================================================================================-->
   <link rel="stylesheet" type="text/css" href="../app/css/btn.css">
   <link rel="stylesheet" type="text/css" href="../app/css/searchbar.css">
+  <link rel="stylesheet" type="text/css" href="../app/css/loader.css">
   <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
 </head>
 <style>
@@ -107,7 +108,10 @@
   }
 </style>
 
-<body>
+<body class="preloading">
+  <div class="load">
+    <img src="../app/images/loader.gif" alt="">
+  </div>
   <div class="container-login101" style="background-image: url('../app/images/bg-01.jpg');">
     <div class="container" style="margin-top: 30px;">
       <div class="row">
@@ -190,6 +194,11 @@
         console.log(xhr.responseText);
       }
     });
+  });
+
+  $(window).on('load', function(event) {
+    $('body').removeClass('preloading');
+    $('.load').delay(500).fadeOut('fast');
   });
 </script>
 

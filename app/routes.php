@@ -116,5 +116,8 @@ $routes = [
     'controller' => 'AdminController',
     'action' => 'showOrderDetail'
   ],
-
+  'your-order' => [
+    'controller' => 'AdminController',
+    'action' => 'showYourOrder'
+  ],
 ];

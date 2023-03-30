@@ -16,6 +16,7 @@
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
     <link rel="stylesheet" type="text/css" href="../app/css/main.css">
+    <link rel="stylesheet" type="text/css" href="../app/css/loader.css">
 
 </head>
 <style>
@@ -42,7 +43,10 @@
     }
 </style>
 
-<body>
+<body class="preloading">
+    <!-- <div class="load">
+        <img src="../app/images/loader.gif" alt="">
+    </div> -->
     <div class="container-login101" style="background-image: url('../app/images/bg-01.jpg');">
         <div class="container">
             <div class="heading-section">
@@ -246,7 +250,6 @@
 
         </div>
     </div>
-    </div>
 </body>
 <?php
 require_once('../app/views/share/footer.php');
@@ -255,6 +258,10 @@ require_once('../app/views/share/footer.php');
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="	sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <script>
+    $(window).on('load', function(event) {
+        $('body').removeClass('preloading');
+        $('.load').delay(500).fadeOut('fast');
+    });
     $(document).ready(function() {
         var slider = $("#slider");
         var thumb = $("#thumb");
