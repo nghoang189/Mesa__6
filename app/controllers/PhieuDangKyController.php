@@ -35,7 +35,7 @@ class PhieuDangKyController {
         $isSuccess = PhieuDangKy::create($hoten, $chuyennganh, $congty, $image);
         if($isSuccess)        
             // Redirect to homepage
-            header('Location: ?route=danh-sach');
+            header('Location: ?route=manage-prd');
         else 
             header('Location: ?route=failure');
         exit;
@@ -63,7 +63,7 @@ class PhieuDangKyController {
         $isSuccess = PhieuDangKy::delete($id);
         if($isSuccess)        
             // Redirect to homepage
-            header('Location: ?route=danh-sach');
+            header('Location: ?route=manage-prd');
         else 
             header('Location: ?route=failure');
         exit;

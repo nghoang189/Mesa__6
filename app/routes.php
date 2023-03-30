@@ -75,6 +75,14 @@ $routes = [
   'view-product' => [
     'controller' => 'PhieuDangKyController',
     'action' => 'viewProduct'
+  ],
+  'admin' => [
+    'controller' => 'AdminController',
+    'action' => 'index'
+  ],
+  'manage-prd' => [
+    'controller' => 'AdminController',
+    'action' => 'manageProduct'
   ]
 ];
 ?>

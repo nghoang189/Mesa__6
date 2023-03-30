@@ -1,5 +1,7 @@
 <?php
 require_once('../app/models/User.php');
+require_once('../app/models/Admin.php');
+
 class AccountController {
     public function logout(){
         unset($_SESSION['UserId']);
@@ -14,7 +16,9 @@ class AccountController {
             // session_start();
             $userName = $_POST['UserName'];
             $pass = $_POST['Pass'];
-        
+            $role = Admin::checkUser($userName, $pass);
+            $user = User::find($userName);
+            $_SESSION['role'] = $role;
             if(empty($userName) || empty($pass))
             {
                 $_SESSION['Error'] = "Vui long nhap TK & MK";
@@ -22,14 +26,21 @@ class AccountController {
                 exit;
             }
 
-            $user = User::find($userName);
             if(!empty($user)){
                 $isSuccess = password_verify($pass, $user['Pass']);
-                if($isSuccess){     
-                    $_SESSION['UserId'] = $user['Id'];  
-                    $_SESSION['FullName'] = $user['FullName'];          
-                    $_SESSION['Avatar'] = $user['Avatar'];      
-                    header('Location: ?');   
+                if($isSuccess){                    
+                    if($role == 1){
+                        $_SESSION['UserId'] = $user['Id'];  
+                        $_SESSION['FullName'] = $user['FullName'];          
+                        // $_SESSION['Avatar'] = $user['Avatar'];      
+                        header('Location: ?route=danh-sach');
+                    }
+                    else{
+                        $_SESSION['UserId'] = $user['Id'];  
+                        $_SESSION['FullName'] = $user['FullName'];          
+                        // $_SESSION['Avatar'] = $user['Avatar'];      
+                        header('Location: ?');
+                    }        
                 }   
                 else 
                 {
@@ -151,25 +162,6 @@ class AccountController {
             // echo "Sorry, there was an error when uploading your file.";
             return 0;
         }
-        }
-    }
-
-    function checkRole(){
-        if (isset($_SESSION['UserId']) == false) {
-            // Nếu người dùng chưa đăng nhập thì chuyển hướng website sang trang đăng nhập
-            header('Location: ?route=login');
-        }else {
-            if (isset($_SESSION['permision']) == true) {
-                // Ngược lại nếu đã đăng nhập
-                $permission = $_SESSION['permision'];
-                // Kiểm tra quyền của người đó có phải là admin hay không
-                if ($permission == '0') {
-                    // Nếu không phải admin thì xuất thông báo
-                    echo "Bạn không đủ quyền truy cập vào trang này<br>";
-                    echo "<a href='?'>Click để về lại trang chủ</a>";
-                    exit();
-                }
-            }
         }
     }
     

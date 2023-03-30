@@ -34,14 +34,5 @@ class User {
       return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    public static function checkRole($userName, $pass)
-    {
-      global $pdo;
-      $stmt = $pdo->prepare('SELECT * FROM User WHERE UserName =:userName, Pass=:pass');
-      $stmt->bindParam(':userName', $userName);
-      $stmt->bindParam(':pass', $pass);
-      $stmt->execute();
-      return $stmt->fetch(PDO::FETCH_ASSOC);
-    }
 }
 ?>

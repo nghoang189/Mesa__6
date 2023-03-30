@@ -145,8 +145,8 @@ include_once('share/header.php');
                             ₫<span></span></h4>
                             <p name="congty" ><?=$phieu['CongTy']?></p>
                             <a href="?route=add-cart&idPhieu=<?=$phieu['MaSV']?>" class="btn btn-primary">Add to Cart</a>
-                            <a href="?route=delete&idPhieu=<?=$phieu['MaSV']?>" class="btn btn-danger " style="margin-left: 10px;" >Delete</a>                         
-                            <a href="?route=cap-nhat&idPhieu=<?=$phieu['MaSV']?>" class="btn btn-warning delete-phieu" style="margin-left: 10px;" >Edit</a>
+                            <!-- <a href="?route=delete&idPhieu=<?=$phieu['MaSV']?>" class="btn btn-danger " style="margin-left: 10px;" >Delete</a>                          -->
+                            <!-- <a href="?route=cap-nhat&idPhieu=<?=$phieu['MaSV']?>" class="btn btn-warning delete-phieu" style="margin-left: 10px;" >Edit</a> -->
                         </div>
                     </div>
                 </div>

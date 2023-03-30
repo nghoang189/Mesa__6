@@ -73,13 +73,19 @@
 						<div class="wrap-login100-form-btn">
 							<div class="login100-form-bgbtn"></div>
 							<button class="login100-form-btn">
-								Login
+								Register
 							</button>
 						</div>
 					</div>
     
                     <div class="login-text">
-                        <span> Already have an account <br> <a href="?route=login">Login here</a></span>
+						<?php
+						if (isset($_SESSION['UserId']) == true) {
+							echo "<span> You've already login. <br> <a href='?route=danh-sach'>Back to Shop</a></span>";							
+						}else{
+							echo "<span> Already have an account <br> <a href='?route=login'>Login here</a></span>";							
+						}
+						?>
                     </div>
 				</form>
 			</div>

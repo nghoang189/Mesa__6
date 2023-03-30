@@ -35,20 +35,7 @@
       include_once('share/header.php');
   ?>
   <style>
-    .btn-primary{
-            border: none;
-            outline: none;
-            color: black;
-            cursor: pointer;
-            position: relative;
-            color: rgb(255, 255, 255);
-            z-index: 0;
-            border-radius: 10px;
-            user-select: none;
-            -webkit-user-select: none;
-            touch-action: manipulation;
-        }
-        .btn-danger{
+    .btn-primary, .btn-danger{
             border: none;
             outline: none;
             color: black;
