@@ -99,6 +99,8 @@
 	</div>
 	<div id="dropDownSelect1"></div>
 </body>
+
+<script src="../app/js/loader.js"></script>
 <!--===============================================================================================-->
 <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
 <!--===============================================================================================-->
@@ -115,11 +117,5 @@
 <script src="vendor/countdowntime/countdowntime.js"></script>
 <!--===============================================================================================-->
 <script src="js/main.js"></script>
-<script>
-	$(window).on('load', function(event) {
-		$('body').removeClass('preloading');
-		$('.load').delay(500).fadeOut('fast');
-	});
-</script>
 
 </html>

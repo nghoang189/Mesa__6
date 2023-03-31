@@ -181,12 +181,16 @@
 .product-count .qty {
 	width: 60px;
 	text-align: center;
+	height: 34px;
+	/* margin:-5px; */
+	/* background: transparent; */
+	/* color:white; */
 }
 .round-black-btn {
 	border-radius: 4px;
     background: rgba(46, 43, 43, 0.659);
     color: #fff;
-    padding: 7px 45px;
+    padding: 7px 30px;
     display: inline-block;
     margin-top: 20px;
     border: solid 2px #212529; 
@@ -202,6 +206,8 @@
     user-select: none;
     -webkit-user-select: none;
     touch-action: manipulation;
+	margin:auto;
+	margin-top: 20px;
 }
 .round-black-btn:hover,
 .round-black-btn:focus {

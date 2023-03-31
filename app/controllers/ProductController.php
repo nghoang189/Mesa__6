@@ -185,17 +185,18 @@ class ProductController
             header('Location: ?route=login');
         } else if (isset($_GET['idPhieu'])) {
             $masoPhieu = $_GET['idPhieu'];
+            $quantity = $_POST['quantity'];
             $Product = Product::find($masoPhieu);
             // $count = 0;
             if (!empty($_SESSION['cart'])) {
                 $acol = array_column($_SESSION['cart'], 'idPhieu');
 
                 if (in_array($masoPhieu, $acol)) {
-                    $_SESSION['cart'][$masoPhieu]['soluong'] += 1;
+                    $_SESSION['cart'][$masoPhieu]['soluong'] += $quantity;
                 } else {
                     $item = [
                         'idPhieu' => $_GET['idPhieu'],
-                        'soluong' => 1,
+                        'soluong' => $quantity,
                         'ten' => $Product['HoTen'],
                         'image' => $Product['Image'],
                         'price' => $Product['ChuyenNganh']
@@ -205,7 +206,7 @@ class ProductController
             } else {
                 $item = [
                     'idPhieu' => $_GET['idPhieu'],
-                    'soluong' => 1,
+                    'soluong' => $quantity,
                     'ten' => $Product['HoTen'],
                     'image' => $Product['Image'],
                     'price' => $Product['ChuyenNganh']

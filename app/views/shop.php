@@ -196,10 +196,11 @@
     });
   });
 
-  $(window).on('load', function(event) {
-    $('body').removeClass('preloading');
-    $('.load').delay(500).fadeOut('fast');
-  });
+  // $(window).on('load', function(event) {
+  //   $('body').removeClass('preloading');
+  //   $('.load').delay(500).fadeOut('fast');
+  // });
 </script>
+<script src="../app/js/loader.js"></script>
 
 </html>
