@@ -17,8 +17,8 @@
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
     <link rel="stylesheet" type="text/css" href="../app/css/main.css">
     <link rel="stylesheet" type="text/css" href="../app/css/loader.css">
-
 </head>
+
 <style>
     .container-login101 {
         width: 100%;
@@ -111,14 +111,14 @@
                                     <label for="star5" title="text">5 stars</label>
                                     <input type="radio" id="star4" name="rate" value="4" checked />
                                     <label for="star4" title="text">4 stars</label>
-                                    <input type="radio" id="star3" name="rate" value="3" checked />
+                                    <input type="radio" id="star3" name="rate" value="3" />
                                     <label for="star3" title="text">3 stars</label>
                                     <input type="radio" id="star2" name="rate" value="2" />
                                     <label for="star2" title="text">2 stars</label>
                                     <input type="radio" id="star1" name="rate" value="1" />
                                     <label for="star1" title="text">1 star</label>
                                 </div>
-                                <span>3 Reviews</span>
+                                <span style="color: white;"></span>3 Reviews</span>
                             </div>
                             <div class="product-price-discount" style="color:white;"><span>
                                     <?php
@@ -134,7 +134,7 @@
                         <div style="font-size:large; margin-bottom:30px; color:white;"><?= $prd['CongTy'] ?></div>
                         <div class="row">
                             <div class="col-md-3">
-                                <label for="size">RAM</label>
+                                <label style="color: white;" for="size">RAM</label>
                                 <select id="size" name="size" class="form-control">
                                     <option>8 GB</option>
                                     <option>16 GB</option>
@@ -142,7 +142,7 @@
                                 </select>
                             </div>
                             <div class="col-md-3">
-                                <label for="color">ROM</label>
+                                <label style="color: white;" for="color">ROM</label>
                                 <select id="color" name="color" class="form-control">
                                     <option>128 GB</option>
                                     <option>256 GB</option>
@@ -150,7 +150,7 @@
                                 </select>
                             </div>
                             <div class="col-md-3">
-                                <label for="color">Color</label>
+                                <label style="color: white;" for="color">Color</label>
                                 <select id="color" name="color" class="form-control">
                                     <option>Blue</option>
                                     <option>Black</option>
@@ -158,26 +158,17 @@
                                 </select>
                             </div>
                         </div>
-                        <?php
-                        if (isset($_POST['submit'])) {
-                            foreach ($_POST['quantity'] as $key => $val) {
-                                if ($val == 0) {
-                                    unset($_SESSION['cart'][$key]);
-                                } else {
-                                    $_SESSION['cart'][$key]['quantity'] = $val;
-                                }
-                            }
-                        }
 
-                        ?>
                         <div class="product-count">
-                            <label for="size">Quantity</label>
-                            <form action="#" class="display-flex" method="post">
-                                <div class="qtyminus">-</div>
-                                <input id="quantity" type="text" name="quantity" value="1" class="qty">
-                                <div class="qtyplus">+</div>
+                            <label style="color: white;" for="size">Quantity</label>
+                            <form action="?route=add-cart&idPhieu=<?= $prd['MaSV'] ?>" class="display-grid" method="post">
+                                <div class="display-flex">
+                                    <div class="qtyminus">-</div>
+                                    <input id="quantity" type="text" name="quantity" value="1" class="qty">
+                                    <div class="qtyplus">+</div>
+                                </div>
+                                <button type="submit" class="round-black-btn">Add to Cart</button>
                             </form>
-                            <a href="?route=add-cart&idPhieu=<?= $prd['MaSV'] ?>" type="submit" class="round-black-btn">Add to Cart</a>
                         </div>
                     </div>
                 </div>
@@ -247,13 +238,13 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 </body>
 <?php
 require_once('../app/views/share/footer.php');
 ?>
+<script src="../app/js/loader.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="	sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
