@@ -94,7 +94,11 @@ class AdminController
             $id = $_SESSION['orderid'];
             $getShowCart = Product::getShowCart($id);
             // $orderDetail = Admin::getOrderDetail($id);
-            require_once('../app/views/order.php');
+            if (isset($_SESSION['orderid'])) {
+                require_once('../app/views/order.php');
+            } else {
+                require_once('../app/views/orderNone.php');
+            }
         } else {
             header('Location: ?');
         }

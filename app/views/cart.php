@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Shopping Cart</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   <!--===============================================================================================-->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
 
@@ -95,7 +96,7 @@ include_once('share/header.php');
               <!-- Card -->
               <div class="card wish-list mb-4">
                 <div class="card-body">
-                  <h5 class="form-label">Cart</h5>
+                  <h5 class="form-label"><i class="fa fa-shopping-cart" aria-hidden="true"></i>&nbsp;Cart</h5>
                   <?php
                   if (isset($_SESSION['cart'])) :
                     foreach ($_SESSION['cart'] as $cart) :
@@ -137,9 +138,12 @@ include_once('share/header.php');
                   <hr class="mb-4">
                   <p class="text-primary mb-0"><i class="fas fa-info-circle mr-1"></i> Do not delay the purchase, adding
                     items to your cart does not mean booking them.</p>
+                  <div style="margin-top: 10px; font-size:large">
+                    <a href="?route=shop" type="button" class="card-link-secondary small text-uppercase mr-3"><i class="fa fa-cart-plus mr-1" aria-hidden="true"></i>&nbsp;Keep Shopping </a>
+                  </div>
                 </div>
               </div>
-              <a href="?route=empty-cart" class="btn btn-sm btn-danger">Delete All Items</a>
+              <a href="?route=empty-cart" class="btn btn-sm btn-danger"><i class="fa fa-trash" aria-hidden="true"></i>&nbsp;&nbsp;Delete All Items</a>
             </div>
             <!--Grid column-->
             <!--Grid column-->
@@ -192,7 +196,7 @@ include_once('share/header.php');
                           ₫<span></span></strong></span>
                     </li>
                   </ul>
-                  <a href="?route=checkout" class="btn btn-primary btn-block waves-effect waves-light">Checkout</a>
+                  <a href="?route=checkout" class="btn btn-primary btn-block waves-effect waves-light"><i class="fa fa-money" aria-hidden="true"></i>&nbsp;&nbsp;Checkout</a>
                 </div>
               </div>
               <!-- Card -->

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shop</title>
+    <title>Product Detail</title>
     <!--Important link from https://bootsnipp.com/snippets/XqvZr-->
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
@@ -167,7 +167,7 @@
                                     <input id="quantity" type="text" name="quantity" value="1" class="qty">
                                     <div class="qtyplus">+</div>
                                 </div>
-                                <button type="submit" class="round-black-btn">Add to Cart</button>
+                                <button type="submit" class="round-black-btn"><i class="fa fa-cart-plus mr-1" aria-hidden="true"></i>&nbsp;Add to Cart</button>
                             </form>
                         </div>
                     </div>

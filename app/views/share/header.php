@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../app/css/navbrand.css">
 </head>
 <style>
     .nav-item {
@@ -87,16 +88,12 @@
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-            <a class="navbar-brand" href="?">
-                <span>
-                    My Store
-                </span>
-            </a>
-
+            <div class="background-two link-container">
+                <a style="font-size: 25px;" class="link-two" href="?">Store</a>
+            </div>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto"></ul>
                 <ul class="navbar-nav">
@@ -127,7 +124,6 @@
                         ?></li>
                     <li class="nav-item active">
                         <?php
-                        // if($_SESSION['LoginSuccess'] == 1){
                         if (isset($_SESSION['role'])) {
                             if ($_SESSION['role'] == 1) {
                                 echo "<a class='nav-link' href='?route=admin'>Admin Home</a>";
@@ -136,7 +132,6 @@
                                 echo "<a class='nav-link'>$userName</a>";
                             }
                         }
-                        // }                       
                         ?>
                     </li>
                 </ul>

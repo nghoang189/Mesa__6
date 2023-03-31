@@ -359,7 +359,7 @@ class ProductController
     {
         if ($_SERVER['REQUEST_METHOD'] == "POST") {
             if (isset($_SESSION['cart'])) {
-                $orderid = "mystore" . rand(0, 999999);
+                $orderid = "MYSTORE" . rand(0, 999999);
                 $name = $_POST['name'];
                 $email = $_POST['email'];
                 $sdt = $_POST['phone'];
@@ -369,13 +369,15 @@ class ProductController
                 $addinfor = $_POST['note'];
                 $total = $_POST['total'];
                 $iddh = Product::createOrder($orderid, $name, $email, $sdt, $state, $city, $address, $addinfor, $total);
-                $_SESSION['orderid'] = $iddh;
-                foreach ($_SESSION['cart'] as $cart) {
-                    Admin::createOrderDetail($iddh, $cart['idPhieu'], $cart['ten'], $cart['soluong'], $cart['price'], $cart['image']);
+                if ($iddh) {
+                    $_SESSION['orderid'] = $iddh;
+                    foreach ($_SESSION['cart'] as $cart) {
+                        Admin::createOrderDetail($iddh, $cart['idPhieu'], $cart['ten'], $cart['soluong'], $cart['price'], $cart['image']);
+                    }
+                    unset($_SESSION['cart']);
+                    $getShowCart = Product::getShowCart($iddh);
+                    require_once('../app/views/order.php');
                 }
-                unset($_SESSION['cart']);
-                $getShowCart = Product::getShowCart($iddh);
-                require_once('../app/views/order.php');
             }
         }
     }
