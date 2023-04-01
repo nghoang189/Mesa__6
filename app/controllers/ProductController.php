@@ -375,7 +375,7 @@ class ProductController
                         Admin::createOrderDetail($iddh, $userid, $cart['idPhieu'], $cart['ten'], $cart['soluong'], $cart['price'], $cart['image']);
                     }
                     unset($_SESSION['cart']);
-                    $getShowCart = Product::getShowCart($iddh);
+                    $getShowCart = Product::getShowCart($userid);
                     require_once('../app/views/order.php');
                 }
             }

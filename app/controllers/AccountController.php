@@ -26,21 +26,17 @@ class AccountController
             }
             $user = User::find($userName);
             $_SESSION['role'] = $user['role'];
-            $_SESSION['userName'] = $userName;
-            $_SESSION['pass'] = $pass;
+            // $_SESSION['userName'] = $userName;
+            // $_SESSION['pass'] = $pass;
 
             if (!empty($user)) {
                 $isSuccess = password_verify($pass, $user['Pass']);
                 if ($isSuccess) {
                     if ($user['role'] == 1) {
                         $_SESSION['UserId'] = $user['Id'];
-                        $_SESSION['FullName'] = $user['FullName'];
-                        // $_SESSION['LoginSuccess'] = 1;      
                         header('Location: ?route=admin');
                     } else {
                         $_SESSION['UserId'] = $user['Id'];
-                        // $_SESSION['LoginSuccess'] = 1; 
-                        $_SESSION['FullName'] = $user['FullName'];
                         header('Location: ?');
                     }
                 } else {
@@ -133,29 +129,29 @@ class AccountController
         }
     }
 
-    function editAvatar()
-    {
-        if ($_SERVER['REQUEST_METHOD'] == "POST") {
-            //upload file
-            $isUploaded = $this->uploadImageFile();
-            if ($isUploaded == 1) {
-                $avatar = htmlspecialchars(basename($_FILES["avatar"]["name"]));
-                session_start();
-                $userId = $_SESSION['UserId'];
-                $isSuccess =  User::editAvatar($userId, $avatar);
-                if ($isSuccess) {
-                    $_SESSION['Avatar'] = $avatar;
-                    header('Location: ?');
-                    exit;
-                } else {
-                    die("Error Update User's Avatar!");
-                }
-            } else {
-                die("Server's Error");
-            }
-        }
-        require_once('../app/views/edit-avatar.php');
-    }
+    // function editAvatar()
+    // {
+    //     if ($_SERVER['REQUEST_METHOD'] == "POST") {
+    //         //upload file
+    //         $isUploaded = $this->uploadImageFile();
+    //         if ($isUploaded == 1) {
+    //             $avatar = htmlspecialchars(basename($_FILES["avatar"]["name"]));
+    //             session_start();
+    //             $userId = $_SESSION['UserId'];
+    //             $isSuccess =  User::editAvatar($userId, $avatar);
+    //             if ($isSuccess) {
+    //                 $_SESSION['Avatar'] = $avatar;
+    //                 header('Location: ?');
+    //                 exit;
+    //             } else {
+    //                 die("Error Update User's Avatar!");
+    //             }
+    //         } else {
+    //             die("Server's Error");
+    //         }
+    //     }
+    //     require_once('../app/views/edit-avatar.php');
+    // }
 
     function uploadImageFile()
     {

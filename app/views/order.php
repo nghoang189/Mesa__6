@@ -130,8 +130,9 @@ include_once('share/header.php');
                                 endforeach;
                                 ?>
                                 <hr class="mb-4">
-                                <p class="text-primary mb-0"><i class="fas fa-info-circle mr-1"></i> Do not delay the purchase, adding
-                                    items to your cart does not mean booking them.</p>
+                                <div style="margin-top: 10px; font-size:large">
+                                    <a href="?route=shop" type="button" class="card-link-secondary small text-uppercase mr-3"><i class="fa fa-cart-plus mr-1" aria-hidden="true"></i>&nbsp;Keep Shopping </a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -148,13 +149,11 @@ include_once('share/header.php');
                                         <span>
                                             <?php
                                             $totalPrice = 0;
-                                            if (isset($_SESSION['orderid'])) :
-                                                foreach ($getShowCart as $cart) :
-                                                    $price = $cart['unit'] * $cart['quantity'];
-                                                    $totalPrice += $price;
-                                                endforeach;
-                                                echo number_format($totalPrice, 0, ',', '.');
-                                            endif;
+                                            foreach ($getShowCart as $cart) :
+                                                $price = $cart['unit'] * $cart['quantity'];
+                                                $totalPrice += $price;
+                                            endforeach;
+                                            echo number_format($totalPrice, 0, ',', '.');
                                             ?>
                                             ₫<span></span></span>
                                     </li>
@@ -173,15 +172,13 @@ include_once('share/header.php');
                                                 <?php
                                                 $vatPrice = 0;
                                                 $totalPrice = 0;
-                                                if (isset($_SESSION['orderid'])) :
-                                                    foreach ($getShowCart as $cart) :
-                                                        $price = $cart['unit'] * $cart['quantity'];
-                                                        $totalPrice += $price;
-                                                    endforeach;
-                                                    $vatPrice = $totalPrice + ($totalPrice * 10) / 100;
-                                                    // $_SESSION['total'] = $vatPrice;
-                                                    echo number_format($vatPrice, 0, ',', '.');
-                                                endif;
+                                                foreach ($getShowCart as $cart) :
+                                                    $price = $cart['unit'] * $cart['quantity'];
+                                                    $totalPrice += $price;
+                                                endforeach;
+                                                $vatPrice = $totalPrice + ($totalPrice * 10) / 100;
+                                                // $_SESSION['total'] = $vatPrice;
+                                                echo number_format($vatPrice, 0, ',', '.');
                                                 ?>
                                                 ₫<span></span></strong></span>
                                     </li>

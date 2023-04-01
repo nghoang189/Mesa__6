@@ -89,50 +89,22 @@ include_once('share/header.php');
                 <!--Grid row-->
                 <div class="row">
                     <!--Grid column-->
-                    <div class="col-lg-8">
+                    <div class="col-lg-12">
                         <!-- Card -->
                         <div class="card wish-list mb-4">
                             <div class="card-body">
-                                <h5 class="form-label">Order</h5>
+                                <h5 class="form-label">Your haven't order anything from My Store</h5>
 
-                                <h5>You haven't order anything</h5>
                                 <?php
                                 ?>
                                 <hr class="mb-4">
-                                <p class="text-primary mb-0"><i class="fas fa-info-circle mr-1"></i> Do not delay the purchase, adding
+                                <div style="margin-top: 10px; font-size:large">
+                                    <a href="?route=shop" type="button" class="card-link-secondary small text-uppercase mr-3"><i class="fa fa-cart-plus mr-1" aria-hidden="true"></i>&nbsp;Shopping </a>
+                                </div>
+                                <p style="margin-top: 10px;" class="text-primary mb-0"><i class="fas fa-info-circle mr-1"></i> Do not delay the purchase, adding
                                     items to your cart does not mean booking them.</p>
                             </div>
                         </div>
-                    </div>
-                    <!--Grid column-->
-                    <!--Grid column-->
-                    <div class="col-lg-4">
-                        <!-- Card -->
-                        <div class="card mb-4">
-                            <div class="card-body">
-                                <h5 class="form-label">The total amount </h5>
-                                <ul class="list-group list-group-flush">
-                                    <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
-                                        Amount Payable
-                                        <span>₫<span></span></span>
-                                    </li>
-                                    <li class="list-group-item d-flex justify-content-between align-items-center px-0">
-                                        Shipping
-                                        <span>Free</span>
-                                    </li>
-                                    <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
-                                        <div>
-                                            <strong>The total amount of</strong>
-                                            <strong>
-                                                <p class="mb-0">(including 10% VAT)</p>
-                                            </strong>
-                                        </div>
-                                        <span><strong> ₫<span></span></strong></span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <!-- Card -->
                     </div>
                     <!--Grid column-->
                 </div>
