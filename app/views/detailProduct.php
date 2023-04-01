@@ -74,13 +74,16 @@
                         <div class="item">
                             <img src="../app/images/<?= $prd['Image3'] ?>">
                         </div>
+
                         <div class="item">
                             <img src="../app/images/<?= $prd['Image4'] ?>">
                         </div>
+
                         <div class="item">
                             <img src="../app/images/<?= $prd['Image5'] ?>">
                         </div>
                     </div>
+
                     <div id="thumb" class="owl-carousel product-thumb">
                         <div class="item">
                             <img src="../app/images/<?= $prd['Image1'] ?>">
@@ -93,14 +96,17 @@
                         <div class="item">
                             <img src="../app/images/<?= $prd['Image3'] ?>">
                         </div>
+
                         <div class="item">
                             <img src="../app/images/<?= $prd['Image4'] ?>">
                         </div>
+
                         <div class="item">
                             <img src="../app/images/<?= $prd['Image5'] ?>">
                         </div>
                     </div>
                 </div>
+
                 <div class="col-md-5">
                     <div class="product-dtl">
                         <div class="product-info">
@@ -131,33 +137,8 @@
                                     ?>₫
                                 </span></div>
                         </div>
+
                         <div style="font-size:large; margin-bottom:30px; color:white;"><?= $prd['CongTy'] ?></div>
-                        <div class="row">
-                            <div class="col-md-3">
-                                <label style="color: white;" for="size">RAM</label>
-                                <select id="size" name="size" class="form-control">
-                                    <option>8 GB</option>
-                                    <option>16 GB</option>
-                                    <option>32 GB</option>
-                                </select>
-                            </div>
-                            <div class="col-md-3">
-                                <label style="color: white;" for="color">ROM</label>
-                                <select id="color" name="color" class="form-control">
-                                    <option>128 GB</option>
-                                    <option>256 GB</option>
-                                    <option>512 GB</option>
-                                </select>
-                            </div>
-                            <div class="col-md-3">
-                                <label style="color: white;" for="color">Color</label>
-                                <select id="color" name="color" class="form-control">
-                                    <option>Blue</option>
-                                    <option>Black</option>
-                                    <option>White</option>
-                                </select>
-                            </div>
-                        </div>
 
                         <div class="product-count">
                             <label style="color: white;" for="size">Quantity</label>

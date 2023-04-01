@@ -140,4 +140,8 @@ $routes = [
     'controller' => 'ProductController',
     'action' => 'sortCategory'
   ],
+  'search-prd' => [
+    'controller' => 'ProductController',
+    'action' => 'searchProduct'
+  ],
 ];

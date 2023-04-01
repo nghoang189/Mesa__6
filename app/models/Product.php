@@ -135,12 +135,12 @@ class Product
   public static function search($keyword)
   {
     global $pdo;
-    $sql = "SELECT * FROM `phieudangkythuctap` WHERE `HoTen` LIKE '%$keyword%'=:keyword;";
-    $q = $pdo->prepare($sql);
-    $q->bindValue(':keyword', '%' . $keyword . '%');
-    $q->execute();
-    $r = $q->fetch(PDO::FETCH_ASSOC);
-    return $r;
+    $sql = 'SELECT * FROM phieudangkythuctap WHERE HoTen LIKE :keyword ORDER BY MaSV DESC ';
+    $pdo_statement = $pdo->prepare($sql);
+    $pdo_statement->bindValue(':keyword', '%' . $keyword . '%', PDO::PARAM_STR);
+    $pdo_statement->execute();
+    $result = $pdo_statement->fetchAll();
+    return $result;
   }
 
   // Create Order

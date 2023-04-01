@@ -107,13 +107,35 @@
     background-color: white;
     border-radius: 0px 10px 10px 0px;
   }
+
+  .pagination {
+    display: inline-block;
+  }
+
+  .pagination a {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+  }
+
+  .pagination a.active {
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 5px;
+  }
+
+  .pagination a:hover:not(.active) {
+    background-color: #ddd;
+    border-radius: 5px;
+  }
 </style>
 
 <body class="preloading">
 
-  <!-- <div class="load">
+  <div class="load">
     <img src="../app/images/loader.gif" alt="">
-  </div> -->
+  </div>
 
   <div class="container-login101" style="background-image: url('../app/images/bg-01.jpg');">
     <div class="container" style="margin-top: 30px;">
@@ -133,7 +155,7 @@
         </div>
 
         <div class="col-sm-9">
-          <form action="" method="post">
+          <form action="?route=search-prd" method="post">
             <div class="container justify-content-center">
               <div class="row">
                 <div class="col-md-8">
@@ -171,6 +193,40 @@
               </div>
             </div>
           <?php endforeach ?>
+          <!-- <?php
+                global $pdo;
+                $limit = 4;
+                $query = "SELECT count(*) FROM phieudangkythuctap";
+                $s = $pdo->query($query);
+                $total_results = $s->fetchColumn();
+                $total_pages = ceil($total_results / $limit);
+
+                if (!isset($_GET['page'])) {
+                  $page = 1;
+                } else {
+                  $page = $_GET['page'];
+                }
+
+                $starting_limit = ($page - 1) * $limit;
+                $show  = "SELECT * FROM phieudangkythuctap ORDER BY id DESC LIMIT ?,?";
+
+                $r = $pdo->prepare($show);
+                // $r->execute([$starting_limit, $limit]);
+
+                while ($res = $r->fetch(PDO::FETCH_ASSOC)) :
+                ?>
+            <h4><?php echo $res['MaSV']; ?></h4>
+            <p><?php echo $res['HoTen']; ?></p>
+            <hr>
+          <?php
+                endwhile;
+
+                for ($page = 1; $page <= $total_pages; $page++) : ?>
+            <div class="pagination">
+              <a href='<?php echo "?page=$page"; ?>' style="color: white;" class="link"><?php echo $page; ?>
+              </a>
+            </div>
+          <?php endfor; ?> -->
         </div>
       </div>
     </div>
@@ -200,11 +256,6 @@
       }
     });
   });
-
-  // $(window).on('load', function(event) {
-  //   $('body').removeClass('preloading');
-  //   $('.load').delay(500).fadeOut('fast');
-  // });
 </script>
 <script src="../app/js/loader.js"></script>
 

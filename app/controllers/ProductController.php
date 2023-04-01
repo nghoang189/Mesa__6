@@ -44,6 +44,14 @@ class ProductController
         require_once('../app/views/shopCategory.php');
     }
 
+    public function searchProduct()
+    {
+        $keyword = $_POST['keyword'];
+        $categoryList = Product::getCategory();
+        $productList = Product::search($keyword);
+        require_once('../app/views/shopSearch.php');
+    }
+
     function createProduct()
     {
         if (isset($_SESSION['UserId']) == false) {
@@ -356,13 +364,6 @@ class ProductController
         $id = $_GET['idPhieu'];
         $product = Product::getAll();
         require_once('../app/views/detailProduct.php');
-    }
-
-    function searchProduct()
-    {
-        $keyword = $_GET['keyword'];
-        $product = Product::search($keyword);
-        require_once('../app/views/shop.php');
     }
 
     function createOrder()
