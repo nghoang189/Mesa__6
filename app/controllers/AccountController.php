@@ -10,8 +10,7 @@ class AccountController
         unset($_SESSION['Error']);
         unset($_SESSION['cart']);
         unset($_SESSION['role']);
-        unset($_SESSION['countCart']);
-        unset($_SESSION['FullName']);
+        unset($_SESSION['orderid']);
         header('Location: ?route=login');
         exit;
     }
@@ -84,6 +83,54 @@ class AccountController
             exit;
         }
         require_once('../app/views/register.php');
+    }
+
+    function showUserInfo()
+    {
+        $id = $_SESSION['UserId'];
+        $user = User::getUser($id);
+        require_once('../app/views/userInfo.php');
+    }
+
+    function updateUserInfo()
+    {
+        if (isset($_SESSION['UserId']) == false) {
+            // Nếu người dùng chưa đăng nhập thì chuyển hướng website sang trang đăng nhập
+            header('Location: ?route=login');
+        } else if ($_SESSION['role'] == 0) {
+            $id = $_GET['idUser'];
+            $fullName = $_POST['FullName'];
+            $userName = $_POST['UserName'];
+            $pass = $_POST['Pass'];
+            $confirmPass = $_POST['ConfirmPass'];
+            if ($pass != $confirmPass) {
+                $_SESSION['Error'] = "Mat khau xac nhan khong dung!";
+                header('Location: ?route=edit-user-info');
+                exit;
+            }
+            $hashPass = password_hash($pass, PASSWORD_BCRYPT);
+            $isSuccess = User::update($id, $userName, $fullName, $hashPass);
+            if ($isSuccess)
+                // Redirect to Manage Products Page
+                header('Location: ?route=user-info');
+            else
+                header('Location: ?route=failure');
+            exit;
+        } else {
+            header('Location: ?');
+        }
+    }
+
+    public function editUserInfo()
+    {
+        if (isset($_SESSION['UserId']) == false) {
+            // Nếu người dùng chưa đăng nhập thì chuyển hướng website sang trang đăng nhập
+            header('Location: ?route=login');
+        } else if ($_SESSION['role'] == 0) {
+            require_once('../app/views/editUserInfo.php');
+        } else {
+            header('Location: ?');
+        }
     }
 
     function editAvatar()

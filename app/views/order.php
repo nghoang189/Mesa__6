@@ -95,41 +95,39 @@ include_once('share/header.php');
                             <div class="card-body">
                                 <h5 class="form-label">Order</h5>
                                 <?php
-                                if (isset($_SESSION['orderid'])) :
-                                    foreach ($getShowCart as $cart) :
+                                foreach ($getShowCart as $cart) :
                                 ?>
-                                        <div class="row mb-4" style="margin-top: 20px">
-                                            <div class="col-md-5 col-lg-3 col-xl-3">
-                                                <div class="mb-3 mb-md-0">
-                                                    <img class="img-fluid w-100" src="../app/images/<?= $cart['image'] ?>" alt="<?= $cart['image'] ?>">
-                                                </div>
+                                    <div class="row mb-4" style="margin-top: 20px">
+                                        <div class="col-md-5 col-lg-3 col-xl-3">
+                                            <div class="mb-3 mb-md-0">
+                                                <img class="img-fluid w-100" src="../app/images/<?= $cart['image'] ?>" alt="<?= $cart['image'] ?>">
                                             </div>
-                                            <div class="col-md-7 col-lg-9 col-xl-9">
-                                                <div>
-                                                    <div class="d-flex justify-content-between">
-                                                        <div>
-                                                            <input type="hidden" name="id" value="<?= $cart['id']; ?>">
-                                                            <h5 class="form-label"><?= $cart['prdname']; ?></h5>
-                                                            <p class="mb-3 text-uppercase" style="margin-top: 20px;">Quantity: <span><?= $cart['quantity']; ?></span></p>
-                                                        </div>
+                                        </div>
+                                        <div class="col-md-7 col-lg-9 col-xl-9">
+                                            <div>
+                                                <div class="d-flex justify-content-between">
+                                                    <div>
+                                                        <input type="hidden" name="id" value="<?= $cart['id']; ?>">
+                                                        <h5 class="form-label"><?= $cart['prdname']; ?></h5>
+                                                        <p class="mb-3 text-uppercase" style="margin-top: 20px;">Quantity: <span><?= $cart['quantity']; ?></span></p>
                                                     </div>
-                                                    <div class="mt-5 d-flex justify-content-between align-items-center">
-                                                        <div>
-                                                        </div>
-                                                        <p class="mb-0" style="font-size: 18px;">
-                                                            <?php
-                                                            $price = $cart['unit'] * $cart['quantity'];
-                                                            echo number_format($price, 0, ',', '.');
-                                                            ?>
-                                                            <span><strong>₫<span></span></strong></span>
-                                                        </p>
+                                                </div>
+                                                <div class="mt-5 d-flex justify-content-between align-items-center">
+                                                    <div>
                                                     </div>
+                                                    <p class="mb-0" style="font-size: 18px;">
+                                                        <?php
+                                                        $price = $cart['unit'] * $cart['quantity'];
+                                                        echo number_format($price, 0, ',', '.');
+                                                        ?>
+                                                        <span><strong>₫<span></span></strong></span>
+                                                    </p>
                                                 </div>
                                             </div>
                                         </div>
+                                    </div>
                                 <?php
-                                    endforeach;
-                                endif;
+                                endforeach;
                                 ?>
                                 <hr class="mb-4">
                                 <p class="text-primary mb-0"><i class="fas fa-info-circle mr-1"></i> Do not delay the purchase, adding

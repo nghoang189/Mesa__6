@@ -29,7 +29,7 @@
     <link rel="stylesheet" type="text/css" href="../app/css/main.css">
     <!--===============================================================================================-->
 
-    <title>Admin - Order Details</title>
+    <title>Admin - Manage Users</title>
     <style>
         .btn-danger {
             padding: 0.2em 0.8em;
@@ -80,40 +80,23 @@
 <body>
     <div class="container-fluid">
 
-        <!-- <a href="?route=add-product" style="margin: 20px 0" class="btn btn-primary">Add Product</a> -->
-        <table class="table" style="margin-top: 80px;">
+        <a href="?route=register" style="margin: 20px 0" class="btn btn-primary">Add User</a>
+        <table class="table">
             <thead class="thead-light">
                 <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Order ID</th>
-                    <th scope="col">Product ID</th>
-                    <th scope="col">Product Name</th>
-                    <th scope="col">Quantity</th>
-                    <th scope="col">Unit</th>
-                    <th scope="col">Preview Image</th>
-                    <!-- <th scope="col">Update</th> -->
+                    <th scope="col">Full Name</th>
+                    <th scope="col">User Name</th>
+                    <th scope="col">Pass</th>
+                    <th scope="col">Update</th>
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($orderDetail as $order) : ?>
+                <?php foreach ($user as $user) : ?>
                     <tr>
-                        <th scope="row"><?= $order['id'] ?></th>
-                        <td style="width:300px; padding-right: 30px;"><?= $order['orderid'] ?></td>
-                        <td style="width:300px; padding-right: 30px;"><?= $order['prdid'] ?></td>
-                        <td style="width:300px; padding-right: 30px;"><?= $order['prdname'] ?></td>
-                        <td style="width:300px; padding-right: 30px;"><?= $order['quantity'] ?></td>
-                        <td>
-                            <!-- <?= $order['unit'] ?> -->
-                            <?php
-                            $price = $order['unit'];
-                            echo number_format($price, 0, ',', '.');
-                            ?>₫
-                        </td>
-
-                        <td><img height="auto" width="150px" src="../app/images/<?= $order['image'] ?>"></td>
-
-                        <!-- <td><a href="?route=delete-prd&idPhieu=<?= $order['MaSV'] ?>" class="btn btn-danger">Delete</a></td>
-                        <td><a href="?route=edit-prd&idPhieu=<?= $order['MaSV'] ?>" class="btn btn-warning">Edit</a></td> -->
+                        <td style="width:300px; padding-right: 30px;"><?= $user['FullName'] ?></td>
+                        <td style="width:200px; padding-right: 40px;"><?= $user['UserName'] ?></td>
+                        <td style="width:500px; padding-right: 40px;">*******</td>
+                        <td><a href="?route=edit-user-info&idUser=<?= $user['Id'] ?>" class="btn btn-warning">Edit</a></td>
 
                     </tr>
                 <?php endforeach ?>

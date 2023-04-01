@@ -187,7 +187,6 @@ class ProductController
             $masoPhieu = $_GET['idPhieu'];
             $quantity = $_POST['quantity'];
             $Product = Product::find($masoPhieu);
-            // $count = 0;
             if (!empty($_SESSION['cart'])) {
                 $acol = array_column($_SESSION['cart'], 'idPhieu');
 
@@ -368,11 +367,12 @@ class ProductController
                 $address = $_POST['address'];
                 $addinfor = $_POST['note'];
                 $total = $_POST['total'];
-                $iddh = Product::createOrder($orderid, $name, $email, $sdt, $state, $city, $address, $addinfor, $total);
+                $userid = $_SESSION['UserId'];
+                $iddh = Product::createOrder($orderid, $userid, $name, $email, $sdt, $state, $city, $address, $addinfor, $total);
                 if ($iddh) {
                     $_SESSION['orderid'] = $iddh;
                     foreach ($_SESSION['cart'] as $cart) {
-                        Admin::createOrderDetail($iddh, $cart['idPhieu'], $cart['ten'], $cart['soluong'], $cart['price'], $cart['image']);
+                        Admin::createOrderDetail($iddh, $userid, $cart['idPhieu'], $cart['ten'], $cart['soluong'], $cart['price'], $cart['image']);
                     }
                     unset($_SESSION['cart']);
                     $getShowCart = Product::getShowCart($iddh);

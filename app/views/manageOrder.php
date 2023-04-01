@@ -29,7 +29,7 @@
     <link rel="stylesheet" type="text/css" href="../app/css/main.css">
     <!--===============================================================================================-->
 
-    <title>Admin - Manage Users</title>
+    <title>Admin - Manage Orders</title>
     <style>
         .btn-danger {
             padding: 0.2em 0.8em;

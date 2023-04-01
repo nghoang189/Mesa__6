@@ -120,4 +120,20 @@ $routes = [
     'controller' => 'AdminController',
     'action' => 'showYourOrder'
   ],
+  'user-info' => [
+    'controller' => 'AccountController',
+    'action' => 'showUserInfo'
+  ],
+  'edit-user-info' => [
+    'controller' => 'AccountController',
+    'action' => 'editUserInfo'
+  ],
+  'update-user-info' => [
+    'controller' => 'AccountController',
+    'action' => 'updateUserInfo'
+  ],
+  'add-user' => [
+    'controller' => 'AdminController',
+    'action' => 'addUser'
+  ],
 ];

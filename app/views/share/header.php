@@ -131,7 +131,7 @@
                             echo "<li class='nav-item active'><a class='nav-link' href='?route=admin'>Admin Home</a></li>";
                         } else {
                             $userName = $_SESSION['userName'];
-                            echo "<li class='nav-item active'><a class='nav-link'>$userName</a></li>";
+                            echo "<li class='nav-item active'><a class='nav-link' href='?route=user-info'>$userName</a></li>";
                         }
                     }
                     ?>

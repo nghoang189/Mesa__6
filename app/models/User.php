@@ -52,4 +52,19 @@ class User
     $stmt = $pdo->prepare($sql);
     return $stmt->execute();
   }
+
+  public static function getUser($id)
+  {
+    global $pdo;
+    $stmt = $pdo->query('SELECT * FROM user WHERE Id="' . $id . '"');
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+  }
+
+  public static function update($id, $userName, $fullName, $pass)
+  {
+    global $pdo;
+    $sql = "UPDATE `user` SET `UserName` = '$userName', `FullName` = '$fullName',`Pass` = '$pass'  WHERE `user`.`Id` = '$id'";
+    $stmt = $pdo->prepare($sql);
+    return $stmt->execute();
+  }
 }

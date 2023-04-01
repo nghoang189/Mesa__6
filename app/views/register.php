@@ -51,7 +51,7 @@
 						Register
 					</span>
 
-					<div class="wrap-input100 validate-input m-b-23" data-validate="Username is reauired">
+					<div class="wrap-input100 validate-input m-b-23" data-validate="Username is required">
 						<span class="label-input100">Full Name</span>
 						<input class="input100" type="text" name="FullName" placeholder="Type your Fullname">
 						<span class="focus-input100" data-symbol="&#xf206;"></span>

@@ -56,21 +56,6 @@ class AdminController
         }
     }
 
-    // public function createOrderDetail()
-    // {
-    //     if (isset($_SESSION['UserId']) == false) {
-    //         // Nếu người dùng chưa đăng nhập thì chuyển hướng website sang trang đăng nhập
-    //         header('Location: ?route=login');
-    //     } else if ($_SESSION['role'] == 1) {
-    //         $item = $_SESSION['cart'];
-    //         $orderid = 
-    //         $isSuccess = Admin::createOrderDetail();
-    //         require_once('../app/views/orderDetail.php');
-    //     } else {
-    //         header('Location: ?');
-    //     }
-    // }
-
     public function showOrderDetail()
     {
         if (isset($_SESSION['UserId']) == false) {
@@ -90,17 +75,14 @@ class AdminController
         if (isset($_SESSION['UserId']) == false) {
             // Nếu người dùng chưa đăng nhập thì chuyển hướng website sang trang đăng nhập
             header('Location: ?route=login');
-        } else if ($_SESSION['role'] == 1) {
-            $id = $_SESSION['orderid'];
+        } else {
+            $id = $_SESSION['UserId'];
             $getShowCart = Product::getShowCart($id);
-            // $orderDetail = Admin::getOrderDetail($id);
-            if (isset($_SESSION['orderid'])) {
+            if ($getShowCart) {
                 require_once('../app/views/order.php');
             } else {
                 require_once('../app/views/orderNone.php');
             }
-        } else {
-            header('Location: ?');
         }
     }
 
@@ -155,5 +137,34 @@ class AdminController
         } else {
             header('Location: ?');
         }
+    }
+
+    public function addUser()
+    {
+        if ($_SERVER['REQUEST_METHOD'] == "POST") {
+            $fullName = $_POST['FullName'];
+            $userName = $_POST['UserName'];
+            $pass = $_POST['Pass'];
+            $confirmPass = $_POST['ConfirmPass'];
+            $role = $_POST['role'];
+
+            if ($pass != $confirmPass) {
+                $_SESSION['Error'] = "Mat khau xac nhan khong dung!";
+                header('Location: ?route=register');
+                exit;
+            }
+
+            $hashPass = password_hash($pass, PASSWORD_BCRYPT);
+            $isSuccess = Admin::create($fullName, $userName, $hashPass, $role);
+            if ($isSuccess)
+                // Redirect to homepage
+                header('Location: ?route=manage-user');
+            else {
+                $_SESSION['Error'] = "Something went wrong when attempt to add new user.";
+                header('Location: ?route=failure');
+            }
+            exit;
+        }
+        require_once('../app/views/addUser.php');
     }
 }
