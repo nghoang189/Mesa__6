@@ -1,6 +1,7 @@
 <?php
 class Product
 {
+  // Get All Product
   public static function getAll()
   {
     global $pdo;
@@ -8,7 +9,7 @@ class Product
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
   }
 
-  //tao phieu dang ky
+  // Create Product
   public static function create(
     $hoten,
     $chuyennganh,
@@ -57,7 +58,7 @@ class Product
     return $stmt->execute();
   }
 
-  // xóa phiếu đăng ký
+  // Delete Product
   public static function delete($id)
   {
     global $pdo;
@@ -68,7 +69,8 @@ class Product
     $stmt = $pdo->prepare($sql);
     return $stmt->execute();
   }
-  // xóa phiếu đăng ký
+
+  // Update Product
   public static function update(
     $id,
     $name,
@@ -103,6 +105,7 @@ class Product
     return $stmt->execute();
   }
 
+  // Find Product
   public static function find($id)
   {
     global $pdo;
@@ -112,6 +115,7 @@ class Product
     return $stmt->fetch(PDO::FETCH_ASSOC);
   }
 
+  // Search Product
   public static function search($keyword)
   {
     global $pdo;
@@ -123,6 +127,7 @@ class Product
     return $r;
   }
 
+  // Create Order
   public static function createOrder($orderid, $name, $email, $sdt, $state, $city, $address, $addinfor, $total,)
   {
     global $pdo;
@@ -147,6 +152,7 @@ class Product
     return $orderid;
   }
 
+  // Show Cart After Ordered
   public static function getShowCart($orderid)
   {
     global $pdo;

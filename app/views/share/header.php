@@ -109,31 +109,32 @@
                     <li class="nav-item active">
                         <a class="nav-link" href="?route=your-order">Your Order</a>
                     </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="?route=register">Register</a>
-                    </li>
+                    <?php
+                    session_start();
+                    if (isset($_SESSION['UserId'])) {
+                        echo "";
+                    } else {
+                        echo "<li class='nav-item active'><a class='nav-link' href='?route=register'>Register</a></li>";
+                    }
+                    ?>
                     <li class="nav-item active">
                         <?php
-                        session_start();
                         if (isset($_SESSION['UserId'])) {
-                            $avatar = $_SESSION['Avatar'] ?? "avatar.jpg";
                             echo "<a class='nav-link' href='?route=logout'>Logout</a>";
                         } else {
                             echo "<a class='nav-link' href='?route=login'>Login</a>";
                         }
                         ?></li>
-                    <li class="nav-item active">
-                        <?php
-                        if (isset($_SESSION['role'])) {
-                            if ($_SESSION['role'] == 1) {
-                                echo "<a class='nav-link' href='?route=admin'>Admin Home</a>";
-                            } else {
-                                $userName = $_SESSION['userName'];
-                                echo "<a class='nav-link'>$userName</a>";
-                            }
+                    <?php
+                    if (isset($_SESSION['role'])) {
+                        if ($_SESSION['role'] == 1) {
+                            echo "<li class='nav-item active'><a class='nav-link' href='?route=admin'>Admin Home</a></li>";
+                        } else {
+                            $userName = $_SESSION['userName'];
+                            echo "<li class='nav-item active'><a class='nav-link'>$userName</a></li>";
                         }
-                        ?>
-                    </li>
+                    }
+                    ?>
                 </ul>
             </div>
         </div>
