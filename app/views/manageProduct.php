@@ -86,6 +86,7 @@
                 <tr>
                     <th scope="col">ID</th>
                     <th scope="col">Product Name</th>
+                    <th scope="col">Category</th>
                     <th scope="col">Price</th>
                     <th scope="col">Description</th>
                     <th scope="col">Preview</th>
@@ -94,23 +95,23 @@
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($productList as $phieu) : ?>
+                <?php foreach ($productList as $product) : ?>
                     <tr>
-                        <th scope="row"><?= $phieu['MaSV'] ?></th>
-                        <td style="width:300px; padding-right: 30px;"><?= $phieu['HoTen'] ?></td>
+                        <th scope="row"><?= $product['MaSV'] ?></th>
+                        <td style="width:300px; padding-right: 30px;"><?= $product['HoTen'] ?></td>
+                        <td style="width:150px; padding-right: 5px;"><?= $product['category'] ?></td>
                         <td>
-                            <!-- <?= $phieu['ChuyenNganh'] ?> -->
                             <?php
-                            $price = $phieu['ChuyenNganh'];
+                            $price = $product['ChuyenNganh'];
                             echo number_format($price, 0, ',', '.');
                             ?>₫
                         </td>
-                        <td style="width:500px; padding-right: 40px;"><?= $phieu['CongTy'] ?></td>
+                        <td style="width:500px; padding-right: 40px;"><?= $product['CongTy'] ?></td>
 
-                        <td><img height="auto" width="150px" src="../app/images/<?= $phieu['Image'] ?>"></td>
+                        <td><img height="auto" width="150px" src="../app/images/<?= $product['Image'] ?>"></td>
 
-                        <td><a href="?route=delete-prd&idPhieu=<?= $phieu['MaSV'] ?>" class="btn btn-danger">Delete</a></td>
-                        <td><a href="?route=edit-prd&idPhieu=<?= $phieu['MaSV'] ?>" class="btn btn-warning">Edit</a></td>
+                        <td><a href="?route=delete-prd&idPhieu=<?= $product['MaSV'] ?>" class="btn btn-danger">Delete</a></td>
+                        <td><a href="?route=edit-prd&idPhieu=<?= $product['MaSV'] ?>" class="btn btn-warning">Edit</a></td>
 
                     </tr>
                 <?php endforeach ?>

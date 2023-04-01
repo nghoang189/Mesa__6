@@ -136,4 +136,8 @@ $routes = [
     'controller' => 'AdminController',
     'action' => 'addUser'
   ],
+  'sort-category' => [
+    'controller' => 'ProductController',
+    'action' => 'sortCategory'
+  ],
 ];

@@ -69,10 +69,20 @@
 					<span class="login100-form-title p-b-49">
 						Edit Products
 					</span>
-					<!-- <input type="hidden" name="id" value="<?= $_POST['id'] ?>"> -->
 					<div class="wrap-input100 validate-input m-b-23" data-validate="Product's Name is required">
 						<span class="label-input100">Product's Name</span>
 						<input class="input101" type="text" id="hoten" name="hoten" value="<?= $data['HoTen'] ?>" required>
+					</div>
+
+					<div style="margin-bottom: 20px;">
+						<span class="label-input100">Category</span>
+						<select id="category" name="category" class="form-control">
+							<option>iPhone</option>
+							<option>Samsung</option>
+							<option>Oppo</option>
+							<option>Xiaomi</option>
+							<option>Vivo</option>
+						</select>
 					</div>
 
 					<div class="wrap-input100 validate-input m-b-23" data-validate="Price is required">

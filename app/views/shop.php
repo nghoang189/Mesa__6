@@ -64,8 +64,8 @@
 
   .list-group {
     max-width: 200px;
-    background: #00BFFF;
-    border: 1px solid #00BFFF;
+    background: transparent;
+    /* border: 1px solid #00BFFF; */
     border-radius: 4px;
     box-shadow: 0px 4px 5px cornflowerblue;
   }
@@ -75,9 +75,10 @@
     text-shadow: 0px -40px 0px rgba(255, 255, 255, 0);
     transform: translateY(-10%) translateZ(2px) scale(1.1);
     font-weight: 600;
-    transition: all 0.75s;
-    transition-delay: all 0.5s;
+    transition: all 0.5s;
+    transition-delay: all 0.25s;
     border: 1px solid #00BFFF;
+    cursor: pointer;
   }
 
   p {
@@ -109,62 +110,68 @@
 </style>
 
 <body class="preloading">
-  <div class="load">
+
+  <!-- <div class="load">
     <img src="../app/images/loader.gif" alt="">
-  </div>
+  </div> -->
+
   <div class="container-login101" style="background-image: url('../app/images/bg-01.jpg');">
     <div class="container" style="margin-top: 30px;">
       <div class="row">
-        <!-- <div class="col-sm-3">
-            <h4 class="form-label">Categories</h4>
-            <ul class="list-group">
-                <a th:href="@{/shop}"><li class="list-group-item">All Products</li></a>
-                <a href="" th:each="category, iStat : ${categories}"
-                  th:href="@{/shop/category/{id}(id=${category.id})}"><li
-                              class="list-group-item" th:text="${category.name}"></li></a>
-            </ul>
-        </div>   -->
-        <form action="" method="get">
-          <div class="container justify-content-center">
-            <div class="row">
-              <div class="col-md-8">
-                <div class="input-group mb-3">
-                  <input type="text" name="keyword" id="keyword" class="form-control input-text" placeholder="Search products...." aria-label="Recipient's username" aria-describedby="basic-addon2">
-                  <div class="input-group-append">
-                    <button class=" search-btn btn btn-lg" type="submit"><i class="fa fa-search"></i></button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </form>
+        <div class="col-sm-3">
+          <h4 style="color:white; margin-bottom:10px;">Categories</h4>
+          <ul class="list-group">
+            <a href="?route=shop">
+              <li class="list-group-item">All Products</li>
+            </a>
+            <?php foreach ($categoryList as $category) : ?>
+              <a href="?route=sort-category&ct=<?= $category['category'] ?>">
+                <li class="list-group-item"><?= $category['category'] ?></li>
+              </a>
+            <?php endforeach ?>
+          </ul>
+        </div>
 
-        <?php foreach ($danhSachPhieuDK as $phieu) : ?>
-          <div class="col-sm-9" id="phieu-container">
-            <div class="card" style="margin-top: 20px">
-              <div class="row no-gutters">
-                <div class="col-sm-5 d-flex justify-content-center">
-                  <img class="" width="200" height="auto" src="../app/images/<?= $phieu['Image'] ?>">
-                </div>
-                <div class="col-sm-7 d-flex justify-content-center">
-                  <div class="card-body">
-                    <h5 class="card-title" name="hoten"><?= $phieu['HoTen'] ?></h5>
-                    <h4 name="chuyennganh">
-                      <?php
-                      echo number_format($phieu['ChuyenNganh'], 0, ',', '.')
-                      ?>
-                      ₫<span></span></h4>
-                    <p name="congty"><?= $phieu['CongTy'] ?></p>
-                    <!-- <a href="?route=add-cart&idPhieu=<?= $phieu['MaSV'] ?>" class="btn btn-primary">Add to Cart</a> -->
-                    <a href="?route=detail-prd&idPhieu=<?= $phieu['MaSV'] ?>" class="btn btn-primary">View Product</a>
-                    <!-- <a class="btn btn-danger delete-phieu" id="<?= $phieu['MaSV'] ?>">Delete</a> -->
-                    <!-- <a href="?route=cap-nhat&idPhieu=<?= $phieu['MaSV'] ?>" class="btn btn-warning delete-phieu" >Edit</a> -->
+        <div class="col-sm-9">
+          <form action="" method="post">
+            <div class="container justify-content-center">
+              <div class="row">
+                <div class="col-md-8">
+                  <div style="width: 140%;" class="input-group mb-3">
+                    <input type="text" name="keyword" id="keyword" class="form-control input-text" placeholder="Search products...." aria-label="Recipient's username" aria-describedby="basic-addon2">
+                    <div class="input-group-append">
+                      <button class=" search-btn btn btn-lg" type="submit"><i class="fa fa-search"></i></button>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-        <?php endforeach ?>
+          </form>
+
+          <?php foreach ($productList as $product) : ?>
+            <div style="max-width:100%" class="col-sm-9" id="phieu-container">
+              <div class="card" style="margin-top: 20px">
+                <div class="row no-gutters">
+                  <div class="col-sm-5 d-flex justify-content-center">
+                    <img class="" width="200" height="auto" src="../app/images/<?= $product['Image'] ?>">
+                  </div>
+                  <div class="col-sm-7 d-flex justify-content-center">
+                    <div class="card-body">
+                      <h5 class="card-title" name="hoten"><?= $product['HoTen'] ?></h5>
+                      <h4 name="chuyennganh">
+                        <?php
+                        echo number_format($product['ChuyenNganh'], 0, ',', '.')
+                        ?>
+                        ₫<span></span></h4>
+                      <p name="congty"><?= $product['CongTy'] ?></p>
+                      <a href="?route=detail-prd&idPhieu=<?= $product['MaSV'] ?>" class="btn btn-primary">View Product</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <?php endforeach ?>
+        </div>
       </div>
     </div>
   </div>

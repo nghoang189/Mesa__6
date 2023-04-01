@@ -64,6 +64,17 @@
 						<input class="input101" type="text" name="hoten">
 					</div>
 
+					<div style="margin-bottom: 20px;">
+						<span class="label-input100">Category</span>
+						<select id="category" name="category" class="form-control">
+							<option>iPhone</option>
+							<option>Samsung</option>
+							<option>Oppo</option>
+							<option>Xiaomi</option>
+							<option>Vivo</option>
+						</select>
+					</div>
+
 					<div class="wrap-input100 validate-input m-b-23" data-validate="Price is required">
 						<span class="label-input100">Price</span>
 						<input class="input101" type="text" name="chuyennganh">

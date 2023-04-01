@@ -9,9 +9,24 @@ class Product
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
   }
 
+  public static function getProductbyCategory($category)
+  {
+    global $pdo;
+    $stmt = $pdo->query('SELECT * FROM phieudangkythuctap WHERE category = "' . $category . '"');
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+  }
+
+  public static function getCategory()
+  {
+    global $pdo;
+    $stmt = $pdo->query('SELECT DISTINCT category FROM phieudangkythuctap');
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+  }
+
   // Create Product
   public static function create(
     $hoten,
+    $category,
     $chuyennganh,
     $congty,
     $image,
@@ -31,13 +46,14 @@ class Product
   ) {
     global $pdo;
 
-    $sql = "INSERT INTO phieudangkythuctap (HoTen, ChuyenNganh, CongTy, Image, Image1, Image2, Image3, 
+    $sql = "INSERT INTO phieudangkythuctap (HoTen, category,ChuyenNganh, CongTy, Image, Image1, Image2, Image3, 
                                             Image4, Image5, Image6, Image7, Image8, des1, des2, ttdes1, ttdes2, embed) 
-            VALUES (:hoten, :chuyennganh, :congty, :image, :image1, :image2, :image3, 
+            VALUES (:hoten, :category,:chuyennganh, :congty, :image, :image1, :image2, :image3, 
                     :image4, :image5, :image6, :image7, :image8, :des1, :des2, :ttdes1, :ttdes2, :embed);";
     $stmt = $pdo->prepare($sql);
 
     $stmt->bindParam(':hoten', $hoten);
+    $stmt->bindParam(':category', $category);
     $stmt->bindParam(':chuyennganh', $chuyennganh);
     $stmt->bindParam(':congty', $congty);
     $stmt->bindParam(':image', $image);

@@ -31,8 +31,17 @@ class ProductController
     // Show Products List
     public function showProduct()
     {
-        $danhSachPhieuDK = Product::getAll();
+        $categoryList = Product::getCategory();
+        $productList = Product::getAll();
         require_once('../app/views/shop.php');
+    }
+
+    public function sortCategory()
+    {
+        $category = $_GET['ct'];
+        $categoryList = Product::getCategory();
+        $productList = Product::getProductbyCategory($category);
+        require_once('../app/views/shopCategory.php');
     }
 
     function createProduct()
@@ -42,6 +51,7 @@ class ProductController
             header('Location: ?route=login');
         } else if ($_SESSION['role'] == 1) {
             $name = $_POST['hoten'];
+            $category = $_POST['category'];
             $price = $_POST['chuyennganh'];
             $des = $_POST['note'];
             $des1 = $_POST['note1'];
@@ -68,6 +78,7 @@ class ProductController
             }
             $isSuccess = Product::create(
                 $name,
+                $category,
                 $price,
                 $des,
                 $image,
