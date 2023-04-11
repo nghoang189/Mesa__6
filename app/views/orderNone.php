@@ -94,9 +94,6 @@ include_once('share/header.php');
                         <div class="card wish-list mb-4">
                             <div class="card-body">
                                 <h5 class="form-label">Your haven't order anything from My Store</h5>
-
-                                <?php
-                                ?>
                                 <hr class="mb-4">
                                 <div style="margin-top: 10px; font-size:large">
                                     <a href="?route=shop" type="button" class="card-link-secondary small text-uppercase mr-3"><i class="fa fa-cart-plus mr-1" aria-hidden="true"></i>&nbsp;Shopping </a>

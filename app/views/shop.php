@@ -153,6 +153,20 @@
     float: right;
     margin-top: 105rem;
   }
+
+  /* .block-ellipsis {
+    display: block;
+    display: -webkit-box;
+    max-width: 100%;
+    height: 43px;
+    margin: 20px auto;
+    font-size: 14px;
+    line-height: 1;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  } */
 </style>
 
 <body class="preloading">
@@ -184,7 +198,7 @@
                 <div class="col-md-8">
                   <div style="width: 140%;" class="input-group mb-3">
                     <input type="text" name="keyword" id="keyword" class="form-control input-text" placeholder="Search products...." aria-label="Recipient's username" aria-describedby="basic-addon2">
-                    <div class="input-group-append">
+                    <div class="input-group-append" aria-label="Search">
                       <button class=" search-btn btn btn-lg" type="submit"><i class="fa fa-search"></i></button>
                     </div>
                   </div>
@@ -208,7 +222,7 @@
                         echo number_format($product['ChuyenNganh'], 0, ',', '.')
                         ?>
                         ₫<span></span></h4>
-                      <p name="congty"><?= $product['CongTy'] ?></p>
+                      <p class="block-ellipsis" name="congty"><?= $product['CongTy'] ?></p>
                       <a href="?route=detail-prd&idPhieu=<?= $product['MaSV'] ?>" class="btn btn-primary">View Product</a>
                     </div>
                   </div>
@@ -223,7 +237,6 @@
           $total_results = $stmt->fetchColumn();
           $total_pages = ceil($total_results / $perPage);
           $page = isset($_GET['page']) ? $_GET['page'] : 1;
-
           for ($page = 1; $page <= $total_pages; $page++) : ?>
             <div class="pagination">
               <a href='<?php echo "?route=shop&page=$page"; ?>' style="color: white;" class="link"><?php echo $page; ?>

@@ -41,6 +41,11 @@
         outline: none;
         border: none;
     }
+
+    .review-item {
+        border-bottom: 1px solid #f1f1f1;
+        padding: 15px 0;
+    }
 </style>
 
 <body class="preloading">
@@ -124,7 +129,10 @@
                                     <input type="radio" id="star1" name="rate" value="1" />
                                     <label for="star1" title="text">1 star</label>
                                 </div>
-                                <span style="color: white;"></span>3 Reviews</span>
+                                <?php
+                                $countReview = count($reviewList);
+                                echo "<span style='color: white;'></span>$countReview Reviews</span>"
+                                ?>
                             </div>
                             <div class="product-price-discount" style="color:white;"><span>
                                     <?php
@@ -160,9 +168,13 @@
                     <li class="tab-item">
                         <a class="nav-link active" id="description-tab" data-toggle="tab" href="#description" role="tab" aria-controls="description" aria-selected="true">Description</a>
                     </li>
-                    <li class="tab-item">
-                        <a class="nav-link" id="review-tab" data-toggle="tab" href="#review" role="tab" aria-controls="review" aria-selected="false">Reviews (0)</a>
-                    </li>
+                    <?php
+                    $countReview = count($reviewList);
+                    echo
+                    "<li class='tab-item'>
+                        <a class='nav-link' id='review-tab' data-toggle='tab' href='#review' role='tab' aria-controls='review' aria-selected='false'>Reviews ( $countReview )</a>
+                    </li>"
+                    ?>
                 </ul>
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade show active" id="description" role="tabpanel" aria-labelledby="description-tab">
@@ -178,9 +190,14 @@
                     </div>
 
                     <div class="tab-pane fade" id="review" role="tabpanel" aria-labelledby="review-tab">
-                        <div class="review-heading">REVIEWS</div>
-                        <p class="mb-20">There are no reviews yet.</p>
-                        <form class="review-form" action="?route=review&id=<?= $prd['MaSV'] ?>" method="post">
+                        <div class="review-heading" style="border-bottom: 1px solid #f1f1f1; padding: 15px 0;">REVIEWS</div>
+                        <?php foreach ($reviewList as $review) : ?>
+                            <div class="review-item">
+                                <h6><?= $review['name'] ?></h6>
+                                <div><?= $review['msg'] ?></div>
+                            </div>
+                        <?php endforeach ?>
+                        <form class="review-form" action="?route=review&idPhieu=<?= $prd['MaSV'] ?>" method="post">
                             <div class="form-group">
                                 <label>Your rating</label>
                                 <div class="reviews-counter">

@@ -103,14 +103,20 @@
                     <li class="nav-item active">
                         <a class="nav-link" href="?route=shop">Shop</a>
                     </li>
+                    <?php
+                    session_start();
+                    ?>
                     <li class="nav-item active">
-                        <a class="nav-link" href="?route=view-cart">Cart</a>
+                        <a class="nav-link" href="?route=view-cart">Cart (<?php if (isset($_SESSION['cart'])) {
+                                                                                echo count($_SESSION['cart']);
+                                                                            } else
+                                                                                echo "0";
+                                                                            ?>)</a>
                     </li>
                     <li class="nav-item active">
                         <a class="nav-link" href="?route=your-order">Your Order</a>
                     </li>
                     <?php
-                    session_start();
                     if (isset($_SESSION['UserId'])) {
                         echo "";
                     } else {

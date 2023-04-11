@@ -30,7 +30,7 @@ class Product
     $starting_limit = ($page - 1) * $perPage;
 
     // Query to fetch users
-    $query = "SELECT * FROM phieudangkythuctap ORDER BY MaSV DESC LIMIT $starting_limit,$perPage";
+    $query = "SELECT * FROM phieudangkythuctap ORDER BY MaSV  LIMIT $starting_limit,$perPage";
 
     // Fetch all users for current page
     $users = $pdo->query($query)->fetchAll();
@@ -41,6 +41,13 @@ class Product
   {
     global $pdo;
     $stmt = $pdo->query('SELECT DISTINCT category FROM phieudangkythuctap');
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+  }
+
+  public static function getReview($prdid)
+  {
+    global $pdo;
+    $stmt = $pdo->query('SELECT * FROM review WHERE prdid = "' . $prdid . '"');
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
   }
 
@@ -194,7 +201,7 @@ class Product
   {
     global $pdo;
     $sql = "INSERT INTO review (prdid , msg, name, email) 
-                VALUES (:prdid, ':msg', ':name', ':email');
+                VALUES (:prdid, :msg, :name, :email);
                 SET @num:= 0;
                 UPDATE `review` SET `id` = @num:= (@num + 1);
                 ALTER TABLE `review` AUTO_INCREMENT = 1;";

@@ -368,6 +368,7 @@ class ProductController
     {
         $id = $_GET['idPhieu'];
         $product = Product::getAll();
+        $reviewList = Product::getReview($id);
         require_once('../app/views/detailProduct.php');
     }
 
@@ -402,11 +403,13 @@ class ProductController
     function reviewProduct()
     {
         if ($_SERVER['REQUEST_METHOD'] == "POST") {
-            $prdid = $_GET['id'];
+            $prdid = $_GET['idPhieu'];
             $msg = $_POST['msg'];
             $name = $_POST['name'];
             $email = $_POST['email'];
             $reviewList = Product::createReview($prdid, $msg, $name, $email);
+            $product = Product::getAll();
+            $reviewList = Product::getReview($prdid);
             if ($reviewList) {
                 require_once('../app/views/detailProduct.php');
             } else {

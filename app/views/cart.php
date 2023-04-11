@@ -96,7 +96,10 @@ include_once('share/header.php');
               <!-- Card -->
               <div class="card wish-list mb-4">
                 <div class="card-body">
-                  <h5 class="form-label"><i class="fa fa-shopping-cart" aria-hidden="true"></i>&nbsp;Cart</h5>
+                  <h5 class="form-label"><i class="fa fa-shopping-cart" aria-hidden="true"></i>&nbsp;Cart (<?php if (isset($_SESSION['cart'])) {
+                                                                                                              echo count($_SESSION['cart']);
+                                                                                                            } else
+                                                                                                              echo "0"; ?>)</h5>
                   <?php
                   if (isset($_SESSION['cart'])) :
                     foreach ($_SESSION['cart'] as $cart) :
