@@ -129,9 +129,11 @@
                     if (isset($_SESSION['role'])) {
                         if ($_SESSION['role'] == 1) {
                             echo "<li class='nav-item active'><a class='nav-link' href='?route=admin'>Admin Home</a></li>";
-                        } else {
+                        } else if (isset($_SESSION['userName'])) {
                             $userName = $_SESSION['userName'];
                             echo "<li class='nav-item active'><a class='nav-link' href='?route=user-info'>$userName</a></li>";
+                        } else {
+                            echo "";
                         }
                     }
                     ?>

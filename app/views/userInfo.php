@@ -80,8 +80,7 @@
 <body>
     <div class="container-fluid">
 
-        <a href="?route=register" style="margin: 20px 0" class="btn btn-primary">Add User</a>
-        <table class="table">
+        <table class="table" style="margin-top: 40px;">
             <thead class="thead-light">
                 <tr>
                     <th scope="col">Full Name</th>

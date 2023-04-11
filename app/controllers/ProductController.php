@@ -32,7 +32,12 @@ class ProductController
     public function showProduct()
     {
         $categoryList = Product::getCategory();
-        $productList = Product::getAll();
+        if (isset($_GET['page'])) {
+            $page = $_GET['page'];
+        } else {
+            $page = 1;
+        }
+        $productList = Product::pagination($page);
         require_once('../app/views/shop.php');
     }
 
@@ -390,6 +395,22 @@ class ProductController
                     $getShowCart = Product::getShowCart($userid);
                     require_once('../app/views/order.php');
                 }
+            }
+        }
+    }
+
+    function reviewProduct()
+    {
+        if ($_SERVER['REQUEST_METHOD'] == "POST") {
+            $prdid = $_GET['id'];
+            $msg = $_POST['msg'];
+            $name = $_POST['name'];
+            $email = $_POST['email'];
+            $reviewList = Product::createReview($prdid, $msg, $name, $email);
+            if ($reviewList) {
+                require_once('../app/views/detailProduct.php');
+            } else {
+                header('Location : ?route=error');
             }
         }
     }

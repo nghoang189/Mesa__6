@@ -16,6 +16,27 @@ class Product
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
   }
 
+  public static function pagination($page)
+  {
+    global $pdo;
+    $perPage = 5;
+
+    // Calculate Total pages
+    $stmt = $pdo->query('SELECT count(*) FROM phieudangkythuctap');
+    $total_results = $stmt->fetchColumn();
+    $total_pages = ceil($total_results / $perPage);
+
+    // Current page
+    $starting_limit = ($page - 1) * $perPage;
+
+    // Query to fetch users
+    $query = "SELECT * FROM phieudangkythuctap ORDER BY MaSV DESC LIMIT $starting_limit,$perPage";
+
+    // Fetch all users for current page
+    $users = $pdo->query($query)->fetchAll();
+    return $users;
+  }
+
   public static function getCategory()
   {
     global $pdo;
@@ -167,6 +188,24 @@ class Product
 
     $stmt->execute();
     return $orderid;
+  }
+
+  public static function createReview($prdid, $msg, $name, $email)
+  {
+    global $pdo;
+    $sql = "INSERT INTO review (prdid , msg, name, email) 
+                VALUES (:prdid, ':msg', ':name', ':email');
+                SET @num:= 0;
+                UPDATE `review` SET `id` = @num:= (@num + 1);
+                ALTER TABLE `review` AUTO_INCREMENT = 1;";
+    $stmt = $pdo->prepare($sql);
+
+    $stmt->bindParam(':prdid', $prdid);
+    $stmt->bindParam(':msg', $msg);
+    $stmt->bindParam(':name', $name);
+    $stmt->bindParam(':email', $email);
+
+    return $stmt->execute();
   }
 
   // Show Cart After Ordered

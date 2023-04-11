@@ -144,4 +144,8 @@ $routes = [
     'controller' => 'ProductController',
     'action' => 'searchProduct'
   ],
+  'review' => [
+    'controller' => 'ProductController',
+    'action' => 'reviewProduct'
+  ],
 ];

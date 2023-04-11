@@ -26,16 +26,18 @@ class AccountController
             }
             $user = User::find($userName);
             $_SESSION['role'] = $user['role'];
-            // $_SESSION['userName'] = $userName;
-            // $_SESSION['pass'] = $pass;
 
             if (!empty($user)) {
                 $isSuccess = password_verify($pass, $user['Pass']);
                 if ($isSuccess) {
                     if ($user['role'] == 1) {
                         $_SESSION['UserId'] = $user['Id'];
+                        $_SESSION['userName'] = $userName;
+                        $_SESSION['pass'] = $pass;
                         header('Location: ?route=admin');
                     } else {
+                        $_SESSION['userName'] = $userName;
+                        $_SESSION['pass'] = $pass;
                         $_SESSION['UserId'] = $user['Id'];
                         header('Location: ?');
                     }

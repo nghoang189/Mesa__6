@@ -117,26 +117,49 @@
     float: left;
     padding: 8px 16px;
     text-decoration: none;
+    margin-top: 15px;
+    border: 2px solid #5a5bd8;
+    border-radius: 10px;
+    margin-left: 3px;
   }
 
   .pagination a.active {
-    background-color: #4CAF50;
-    color: white;
-    border-radius: 5px;
+    box-shadow: 3px -3px 10px #5a5bd8;
+    -moz-box-shadow: 3px -3px 10px #5a5bd8;
+    -webkit-box-shadow: 3px -3px 10px #5a5bd8;
+    -o-box-shadow: 3px -3px 10px #5a5bd8;
+    -ms-box-shadow: 3px -3px 10px #5a5bd8;
+    border-color: #5a5bd8;
+    outline: 0px;
   }
 
   .pagination a:hover:not(.active) {
-    background-color: #ddd;
-    border-radius: 5px;
+    box-shadow: 3px -3px 10px #5a5bd8;
+    -moz-box-shadow: 3px -3px 10px #5a5bd8;
+    -webkit-box-shadow: 3px -3px 10px #5a5bd8;
+    -o-box-shadow: 3px -3px 10px #5a5bd8;
+    -ms-box-shadow: 3px -3px 10px #5a5bd8;
+    border-color: #5a5bd8;
+    outline: 0px;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  .back-to-top img {
+    width: 50px;
+    height: auto;
+    float: right;
+    margin-top: 105rem;
   }
 </style>
 
 <body class="preloading">
 
-  <div class="load">
+  <!-- <div class="load">
     <img src="../app/images/loader.gif" alt="">
-  </div>
-
+  </div> -->
   <div class="container-login101" style="background-image: url('../app/images/bg-01.jpg');">
     <div class="container" style="margin-top: 30px;">
       <div class="row">
@@ -193,42 +216,27 @@
               </div>
             </div>
           <?php endforeach ?>
-          <!-- <?php
-                global $pdo;
-                $limit = 4;
-                $query = "SELECT count(*) FROM phieudangkythuctap";
-                $s = $pdo->query($query);
-                $total_results = $s->fetchColumn();
-                $total_pages = ceil($total_results / $limit);
-
-                if (!isset($_GET['page'])) {
-                  $page = 1;
-                } else {
-                  $page = $_GET['page'];
-                }
-
-                $starting_limit = ($page - 1) * $limit;
-                $show  = "SELECT * FROM phieudangkythuctap ORDER BY id DESC LIMIT ?,?";
-
-                $r = $pdo->prepare($show);
-                // $r->execute([$starting_limit, $limit]);
-
-                while ($res = $r->fetch(PDO::FETCH_ASSOC)) :
-                ?>
-            <h4><?php echo $res['MaSV']; ?></h4>
-            <p><?php echo $res['HoTen']; ?></p>
-            <hr>
           <?php
-                endwhile;
+          global $pdo;
+          $perPage = 5;
+          $stmt = $pdo->query('SELECT count(*) FROM phieudangkythuctap');
+          $total_results = $stmt->fetchColumn();
+          $total_pages = ceil($total_results / $perPage);
+          $page = isset($_GET['page']) ? $_GET['page'] : 1;
 
-                for ($page = 1; $page <= $total_pages; $page++) : ?>
+          for ($page = 1; $page <= $total_pages; $page++) : ?>
             <div class="pagination">
-              <a href='<?php echo "?page=$page"; ?>' style="color: white;" class="link"><?php echo $page; ?>
+              <a href='<?php echo "?route=shop&page=$page"; ?>' style="color: white;" class="link"><?php echo $page; ?>
               </a>
             </div>
-          <?php endfor; ?> -->
+          <?php endfor; ?>
         </div>
       </div>
+    </div>
+    <div class="back-to-top">
+      <a href="#">
+        <img src="../app/images/back-top.png" alt="back-to-top">
+      </a>
     </div>
   </div>
 </body>
