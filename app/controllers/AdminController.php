@@ -2,6 +2,7 @@
 require_once('../app/models/Admin.php');
 require_once('../app/models/Product.php');
 require_once('../app/models/User.php');
+require_once('../app/models/Order.php');
 
 class AdminController
 {
@@ -49,7 +50,7 @@ class AdminController
             // Nếu người dùng chưa đăng nhập thì chuyển hướng website sang trang đăng nhập
             header('Location: ?route=login');
         } else if ($_SESSION['role'] == 1) {
-            $orderList = Admin::getAllOrderList();
+            $orderList = Order::getAllOrderList();
             require_once('../app/views/manageOrder.php');
         } else {
             header('Location: ?');
@@ -63,26 +64,10 @@ class AdminController
             header('Location: ?route=login');
         } else if ($_SESSION['role'] == 1) {
             $id = $_GET['orderid'];
-            $orderDetail = Admin::getOrderDetail($id);
+            $orderDetail = Order::getOrderDetail($id);
             require_once('../app/views/orderDetail.php');
         } else {
             header('Location: ?');
-        }
-    }
-
-    public function showYourOrder()
-    {
-        if (isset($_SESSION['UserId']) == false) {
-            // Nếu người dùng chưa đăng nhập thì chuyển hướng website sang trang đăng nhập
-            header('Location: ?route=login');
-        } else {
-            $id = $_SESSION['UserId'];
-            $getShowCart = Product::getShowCart($id);
-            if ($getShowCart) {
-                require_once('../app/views/order.php');
-            } else {
-                require_once('../app/views/orderNone.php');
-            }
         }
     }
 

@@ -1,6 +1,7 @@
 <?php
 require_once('../app/models/Product.php');
 require_once('../app/models/Admin.php');
+require_once('../app/models/Order.php');
 
 class ProductController
 {
@@ -264,14 +265,14 @@ class ProductController
         exit;
     }
 
-    function deleteAjax()
-    {
-        if ($_SERVER['REQUEST_METHOD'] == "POST") {
-            $idPhieu = $_POST['id'];
-            $isSuccess = Product::delete($idPhieu);
-            echo json_encode(['success' => $isSuccess]);
-        }
-    }
+    // function deleteAjax()
+    // {
+    //     if ($_SERVER['REQUEST_METHOD'] == "POST") {
+    //         $idPhieu = $_POST['id'];
+    //         $isSuccess = Product::delete($idPhieu);
+    //         echo json_encode(['success' => $isSuccess]);
+    //     }
+    // }
 
     function uploadImageFile()
     {
@@ -354,50 +355,12 @@ class ProductController
         }
     }
 
-    function checkOut()
-    {
-        if (isset($_SESSION['UserId']) == false) {
-            // Nếu người dùng chưa đăng nhập thì chuyển hướng website sang trang đăng nhập
-            header('Location: ?route=login');
-        } else {
-            require_once('../app/views/checkout.php');
-        }
-    }
-
     function detailProduct()
     {
         $id = $_GET['idPhieu'];
         $product = Product::getAll();
         $reviewList = Product::getReview($id);
         require_once('../app/views/detailProduct.php');
-    }
-
-    function createOrder()
-    {
-        if ($_SERVER['REQUEST_METHOD'] == "POST") {
-            if (isset($_SESSION['cart'])) {
-                $orderid = "MYSTORE" . rand(0, 999999);
-                $name = $_POST['name'];
-                $email = $_POST['email'];
-                $sdt = $_POST['phone'];
-                $state = $_POST['state'];
-                $city = $_POST['city'];
-                $address = $_POST['address'];
-                $addinfor = $_POST['note'];
-                $total = $_POST['total'];
-                $userid = $_SESSION['UserId'];
-                $iddh = Product::createOrder($orderid, $userid, $name, $email, $sdt, $state, $city, $address, $addinfor, $total);
-                if ($iddh) {
-                    $_SESSION['orderid'] = $iddh;
-                    foreach ($_SESSION['cart'] as $cart) {
-                        Admin::createOrderDetail($iddh, $userid, $cart['idPhieu'], $cart['ten'], $cart['soluong'], $cart['price'], $cart['image']);
-                    }
-                    unset($_SESSION['cart']);
-                    $getShowCart = Product::getShowCart($userid);
-                    require_once('../app/views/order.php');
-                }
-            }
-        }
     }
 
     function reviewProduct()

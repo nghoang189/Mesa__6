@@ -4,6 +4,30 @@ $routes = [
     'controller' => 'HomeController',
     'action' => 'index'
   ],
+  'register' => [
+    'controller' => 'AccountController',
+    'action' => 'register'
+  ],
+  'login' => [
+    'controller' => 'AccountController',
+    'action' => 'login'
+  ],
+  'logout' => [
+    'controller' => 'AccountController',
+    'action' => 'logout'
+  ],
+  'user-info' => [
+    'controller' => 'AccountController',
+    'action' => 'showUserInfo'
+  ],
+  'edit-user-info' => [
+    'controller' => 'AccountController',
+    'action' => 'editUserInfo'
+  ],
+  'update-user-info' => [
+    'controller' => 'AccountController',
+    'action' => 'updateUserInfo'
+  ],
   'add-product' => [
     'controller' => 'ProductController',
     'action' => 'addProduct'
@@ -27,22 +51,6 @@ $routes = [
   'update-prd' => [
     'controller' => 'ProductController',
     'action' => 'updateProduct'
-  ],
-  'register' => [
-    'controller' => 'AccountController',
-    'action' => 'register'
-  ],
-  'login' => [
-    'controller' => 'AccountController',
-    'action' => 'login'
-  ],
-  'logout' => [
-    'controller' => 'AccountController',
-    'action' => 'logout'
-  ],
-  'edit-avatar' => [
-    'controller' => 'AccountController',
-    'action' => 'editAvatar'
   ],
   'add-cart' => [
     'controller' => 'ProductController',
@@ -68,13 +76,25 @@ $routes = [
     'controller' => 'ProductController',
     'action' => 'deleteAjax'
   ],
-  'checkout' => [
-    'controller' => 'ProductController',
-    'action' => 'checkOut'
-  ],
   'view-product' => [
     'controller' => 'ProductController',
     'action' => 'viewProduct'
+  ],
+  'detail-prd' => [
+    'controller' => 'ProductController',
+    'action' => 'detailProduct'
+  ],
+  'sort-category' => [
+    'controller' => 'ProductController',
+    'action' => 'sortCategory'
+  ],
+  'search-prd' => [
+    'controller' => 'ProductController',
+    'action' => 'searchProduct'
+  ],
+  'review' => [
+    'controller' => 'ProductController',
+    'action' => 'reviewProduct'
   ],
   'admin' => [
     'controller' => 'AdminController',
@@ -100,14 +120,6 @@ $routes = [
     'controller' => 'AdminController',
     'action' => 'updateUser'
   ],
-  'detail-prd' => [
-    'controller' => 'ProductController',
-    'action' => 'detailProduct'
-  ],
-  'order' => [
-    'controller' => 'ProductController',
-    'action' => 'createOrder'
-  ],
   'manage-order' => [
     'controller' => 'AdminController',
     'action' => 'showOrderList'
@@ -116,36 +128,20 @@ $routes = [
     'controller' => 'AdminController',
     'action' => 'showOrderDetail'
   ],
-  'your-order' => [
-    'controller' => 'AdminController',
-    'action' => 'showYourOrder'
-  ],
-  'user-info' => [
-    'controller' => 'AccountController',
-    'action' => 'showUserInfo'
-  ],
-  'edit-user-info' => [
-    'controller' => 'AccountController',
-    'action' => 'editUserInfo'
-  ],
-  'update-user-info' => [
-    'controller' => 'AccountController',
-    'action' => 'updateUserInfo'
-  ],
   'add-user' => [
     'controller' => 'AdminController',
     'action' => 'addUser'
   ],
-  'sort-category' => [
-    'controller' => 'ProductController',
-    'action' => 'sortCategory'
+  'order' => [
+    'controller' => 'OrderController',
+    'action' => 'createOrder'
   ],
-  'search-prd' => [
-    'controller' => 'ProductController',
-    'action' => 'searchProduct'
+  'checkout' => [
+    'controller' => 'OrderController',
+    'action' => 'checkOut'
   ],
-  'review' => [
-    'controller' => 'ProductController',
-    'action' => 'reviewProduct'
+  'your-order' => [
+    'controller' => 'OrderController',
+    'action' => 'showYourOrder'
   ],
 ];

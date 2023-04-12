@@ -217,12 +217,12 @@
                             </div>
                             <div class="form-group">
                                 <label>Your message</label>
-                                <textarea class="form-control" name="msg" rows="10"></textarea>
+                                <textarea class="form-control" name="msg" rows="10" required></textarea>
                             </div>
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <input type="text" name="name" class="form-control" placeholder="Name">
+                                        <input type="text" name="name" class="form-control" placeholder="Name" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">

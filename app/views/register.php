@@ -53,25 +53,25 @@
 
 					<div class="wrap-input100 validate-input m-b-23" data-validate="Username is required">
 						<span class="label-input100">Full Name</span>
-						<input class="input100" type="text" name="FullName" placeholder="Type your Fullname">
+						<input class="input100" type="text" name="FullName" placeholder="Type your Fullname" required>
 						<span class="focus-input100" data-symbol="&#xf206;"></span>
 					</div>
 
 					<div class="wrap-input100 validate-input m-b-23" data-validate="Username is required">
 						<span class="label-input100">Username</span>
-						<input class="input100" type="text" name="UserName" placeholder="Type your Username">
+						<input class="input100" type="text" name="UserName" placeholder="Type your Username" required>
 						<span class="focus-input100" data-symbol="&#xf206;"></span>
 					</div>
 
 					<div class="wrap-input100 validate-input m-b-23" data-validate="Password is required">
 						<span class="label-input100">Password</span>
-						<input class="input100" type="password" name="Pass" placeholder="Type your Password">
+						<input class="input100" type="password" name="Pass" placeholder="Type your Password" required>
 						<span class="focus-input100" data-symbol="&#xf190;"></span>
 					</div>
 
 					<div class="wrap-input100 validate-input m-b-23" data-validate="Password is required">
 						<span class="label-input100">Password</span>
-						<input class="input100" type="password" name="ConfirmPass" placeholder="Confirm your Password">
+						<input class="input100" type="password" name="ConfirmPass" placeholder="Confirm your Password" required>
 						<span class="focus-input100" data-symbol="&#xf190;"></span>
 					</div>
 

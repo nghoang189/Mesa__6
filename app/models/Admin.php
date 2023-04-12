@@ -26,42 +26,6 @@ class Admin
         return $stmt->execute();
     }
 
-    public static function getAllOrderList()
-    {
-        global $pdo;
-        $stmt = $pdo->query('SELECT * FROM orderlist');
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
-    }
-
-    public static function createOrderDetail($orderid, $userid, $prdid, $prdname, $quantity, $unit, $image)
-    {
-        global $pdo;
-
-        $sql = "INSERT INTO orderdetail (orderid, userid ,prdid, prdname, quantity, unit, image) 
-                VALUES (:orderid, :userid,:prdid, :prdname, :quantity, :unit, :image);
-                SET @num:= 0;
-                UPDATE `orderdetail` SET `id` = @num:= (@num + 1);
-                ALTER TABLE `orderdetail` AUTO_INCREMENT = 1;";
-        $stmt = $pdo->prepare($sql);
-
-        $stmt->bindParam(':orderid', $orderid);
-        $stmt->bindParam(':userid', $userid);
-        $stmt->bindParam(':prdid', $prdid);
-        $stmt->bindParam(':prdname', $prdname);
-        $stmt->bindParam(':quantity', $quantity);
-        $stmt->bindParam(':unit', $unit);
-        $stmt->bindParam(':image', $image);
-
-        return $stmt->execute();
-    }
-
-    public static function getOrderDetail($id)
-    {
-        global $pdo;
-        $stmt = $pdo->query('SELECT * FROM orderdetail WHERE orderid="' . $id . '"');
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
-    }
-
     public static function create($fullName, $userName, $hashPass, $role)
     {
         global $pdo;

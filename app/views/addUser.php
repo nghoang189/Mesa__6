@@ -53,31 +53,31 @@
 
                     <div class="wrap-input100 validate-input m-b-23" data-validate="Username is required">
                         <span class="label-input100">Full Name</span>
-                        <input class="input100" type="text" name="FullName" placeholder="Type Fullname">
+                        <input class="input100" type="text" name="FullName" placeholder="Type Fullname" required>
                         <span class="focus-input100" data-symbol="&#xf206;"></span>
                     </div>
 
                     <div class="wrap-input100 validate-input m-b-23" data-validate="Username is required">
                         <span class="label-input100">Username</span>
-                        <input class="input100" type="text" name="UserName" placeholder="Type Username">
+                        <input class="input100" type="text" name="UserName" placeholder="Type Username" required>
                         <span class="focus-input100" data-symbol="&#xf206;"></span>
                     </div>
 
                     <div class="wrap-input100 validate-input m-b-23" data-validate="Password is required">
                         <span class="label-input100">Password</span>
-                        <input class="input100" type="password" name="Pass" placeholder="Type Password">
+                        <input class="input100" type="password" name="Pass" placeholder="Type Password" required>
                         <span class="focus-input100" data-symbol="&#xf190;"></span>
                     </div>
 
                     <div class="wrap-input100 validate-input m-b-23" data-validate="Password is required">
                         <span class="label-input100">Password</span>
-                        <input class="input100" type="password" name="ConfirmPass" placeholder="Confirm your Password">
+                        <input class="input100" type="password" name="ConfirmPass" placeholder="Confirm your Password" required>
                         <span class="focus-input100" data-symbol="&#xf190;"></span>
                     </div>
 
                     <div class="wrap-input100 validate-input m-b-23" data-validate="Username is required">
                         <span class="label-input100">Role &nbsp; (1: Admin &nbsp;&nbsp; 0: User)</span>
-                        <input class="input100" type="text" name="role" placeholder="Type Role">
+                        <input class="input100" type="text" name="role" placeholder="Type Role" required>
                         <span class="focus-input100" data-symbol="&#xf206;"></span>
                     </div>
 

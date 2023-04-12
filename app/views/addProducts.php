@@ -61,7 +61,7 @@
 
 					<div class="wrap-input100 validate-input m-b-23" data-validate="Product's Name is required">
 						<span class="label-input100">Product's Name</span>
-						<input class="input101" type="text" name="hoten">
+						<input class="input101" type="text" name="hoten" required>
 					</div>
 
 					<div style="margin-bottom: 20px;">
@@ -77,52 +77,52 @@
 
 					<div class="wrap-input100 validate-input m-b-23" data-validate="Price is required">
 						<span class="label-input100">Price</span>
-						<input class="input101" type="text" name="chuyennganh">
+						<input class="input101" type="text" name="chuyennganh" required>
 					</div>
 
 					<div class="wrap-input100 validate-input  m-b-23" data-validate="Description is required">
 						<span class="label-input100">Description</span>
-						<textarea name="note" id="note" value="none" class="md-textarea form-control" rows="5"></textarea>
+						<textarea name="note" id="note" value="none" class="md-textarea form-control" rows="5" required></textarea>
 					</div>
 
 					<div class="wrap-input101 validate-input  m-b-23" data-validate="Product's Image is required">
 						<span class="label-input100">Product's Image</span>
-						<input class="input101" type="file" name="prd-picture" style="margin-top:10px; cursor: pointer; ">
+						<input class="input101" type="file" name="prd-picture" style="margin-top:10px; cursor: pointer; " required>
 						<div class="label-input100" style="margin-top: 20px;">Slide Images</div>
-						<input class="input101" type="file" name="prd-picture1" style="margin-top:10px; cursor: pointer; ">
-						<input class="input101" type="file" name="prd-picture2" style="margin-top:10px; cursor: pointer; ">
-						<input class="input101" type="file" name="prd-picture3" style="margin-top:10px; cursor: pointer; ">
-						<input class="input101" type="file" name="prd-picture4" style="margin-top:10px; cursor: pointer; ">
-						<input class="input101" type="file" name="prd-picture5" style="margin-top:10px; cursor: pointer; ">
+						<input class="input101" type="file" name="prd-picture1" style="margin-top:10px; cursor: pointer; " required>
+						<input class="input101" type="file" name="prd-picture2" style="margin-top:10px; cursor: pointer; " required>
+						<input class="input101" type="file" name="prd-picture3" style="margin-top:10px; cursor: pointer; " required>
+						<input class="input101" type="file" name="prd-picture4" style="margin-top:10px; cursor: pointer; " required>
+						<input class="input101" type="file" name="prd-picture5" style="margin-top:10px; cursor: pointer; " required>
 						<div class="label-input100" style="margin-top: 20px;">Detail Images</div>
-						<input class="input101" type="file" name="prd-picture6" style="margin-top:10px; cursor: pointer; ">
-						<input class="input101" type="file" name="prd-picture7" style="margin-top:10px; cursor: pointer; ">
-						<input class="input101" type="file" name="prd-picture8" style="margin-top:10px; cursor: pointer; ">
+						<input class="input101" type="file" name="prd-picture6" style="margin-top:10px; cursor: pointer; " required>
+						<input class="input101" type="file" name="prd-picture7" style="margin-top:10px; cursor: pointer; " required>
+						<input class="input101" type="file" name="prd-picture8" style="margin-top:10px; cursor: pointer; " required>
 					</div>
 
 					<div class="wrap-input100 validate-input  m-b-23" data-validate="Description is required">
 						<span class="label-input100">Detail Description 1</span>
-						<textarea name="note1" id="note1" value="none" class="md-textarea form-control" rows="5"></textarea>
+						<textarea name="note1" id="note1" value="none" class="md-textarea form-control" rows="5" required></textarea>
 					</div>
 
 					<div class="wrap-input100 validate-input  m-b-23" data-validate="Description is required">
 						<span class="label-input100">Detail Description 2</span>
-						<textarea name="note2" id="note2" value="none" class="md-textarea form-control" rows="5"></textarea>
+						<textarea name="note2" id="note2" value="none" class="md-textarea form-control" rows="5" required></textarea>
 					</div>
 
 					<div class="wrap-input100 validate-input m-b-23" data-validate="Product's Name is required">
 						<span class="label-input100">Title Des 1</span>
-						<input class="input101" type="text" name="ttdes1">
+						<input class="input101" type="text" name="ttdes1" required>
 					</div>
 
 					<div class="wrap-input100 validate-input m-b-23" data-validate="Product's Name is required">
 						<span class="label-input100">Title Des 2</span>
-						<input class="input101" type="text" name="ttdes2">
+						<input class="input101" type="text" name="ttdes2" required>
 					</div>
 
 					<div class="wrap-input100 validate-input m-b-23" data-validate="Product's Name is required">
 						<span class="label-input100">Embed Code</span>
-						<input class="input101" type="text" name="embed">
+						<input class="input101" type="text" name="embed" required>
 					</div>
 
 					<div class="container-login100-form-btn">

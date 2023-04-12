@@ -69,9 +69,7 @@
 
 <body>
     <div class="container-login101" style="background-image: url('../app/images/bg-01.jpg');">
-
         <div class="container">
-
             <!--Section: Block Content-->
             <section class="mt-5 mb-4">
                 <form action="?route=order" method="post">
@@ -79,11 +77,9 @@
                     <div class="row">
                         <!--Grid column left-->
                         <div class="col-lg-8 mb-4">
-
                             <!-- Card -->
                             <div class="card wish-list pb-1">
                                 <div class="card-body">
-
                                     <h5 class="form-label">Billing details</h5>
 
                                     <!-- RecipientName & Email -->
@@ -94,7 +90,7 @@
                                             <!-- Recipient Name -->
                                             <div class="md-form md-outline mb-0 mb-lg-4">
                                                 <label class="form-label" for="recipientName">Recipient Name</label>
-                                                <input type="text" name="name" id="name" placeholder="Nguyen Hoang" class="form-control mb-0 mb-lg-2">
+                                                <input type="text" name="name" id="name" placeholder="Nguyen Hoang" class="form-control mb-0 mb-lg-2" required>
                                             </div>
                                         </div>
                                         <!-- Grid column -->
@@ -110,6 +106,7 @@
                                         <!-- Grid column -->
                                     </div>
                                     <!-- Grid row -->
+
                                     <!-- Phone & PostCode -->
                                     <!-- Grid row -->
                                     <div class="row">
@@ -118,22 +115,13 @@
                                             <!-- Phone -->
                                             <div class="md-form md-outline mb-0 mb-lg-4">
                                                 <label class="form-label" for="phone">Phone</label>
-                                                <input type="number" th:maxlength="12" name="phone" id="phone" placeholder="0971499652" class="form-control mb-0 mb-lg-2">
+                                                <input type="number" th:maxlength="12" name="phone" id="phone" placeholder="0971499652" class="form-control mb-0 mb-lg-2" required>
                                             </div>
                                         </div>
                                         <!-- Grid column -->
-
-                                        <!-- Grid column -->
-                                        <!-- <div class="col-lg-6"> -->
-                                        <!-- Postal Code -->
-                                        <!-- <div class="md-form md-outline">
-                                                <label class="form-label" for="postalCode">Postcode/ZIP</label>
-                                                <input type="number" th:maxlength="7" th:field="*{postalCode}" name="postalCode" id="postalCode" placeholder="90002" class="form-control">
-                                            </div>
-                                        </div> -->
-                                        <!-- Grid column -->
                                     </div>
                                     <!-- Grid row -->
+
                                     <!-- State & CountryCode -->
                                     <!-- Grid row -->
                                     <div class="row">
@@ -142,19 +130,9 @@
                                             <!-- State -->
                                             <div class="md-form md-outline mb-0 mb-lg-4">
                                                 <label class="form-label" for="state">State</label>
-                                                <input type="text" name="state" id="state" placeholder="Binh Thanh" class="form-control mb-0 mb-lg-2">
+                                                <input type="text" name="state" id="state" placeholder="Binh Thanh" class="form-control mb-0 mb-lg-2" required>
                                             </div>
                                         </div>
-                                        <!-- Grid column -->
-
-                                        <!-- Grid column -->
-                                        <!-- <div class="col-lg-6"> -->
-                                        <!-- Country Code -->
-                                        <!-- <div class="md-form md-outline">
-                                                <label class="form-label" for="countryCode">Country Code</label>
-                                                <input type="text" th:field="*{countryCode}" name="countryCode" id="countryCode" placeholder="VN" class="form-control">
-                                            </div> -->
-                                        <!-- </div> -->
                                         <!-- Grid column -->
                                     </div>
                                     <!-- Grid row -->
@@ -162,20 +140,14 @@
                                     <!-- Town / City -->
                                     <div class="md-form md-outline mt-2">
                                         <label class="form-label" for="city">Town / City</label>
-                                        <input type="text" name="city" id="city" placeholder="Ho Chi Minh" class="form-control">
+                                        <input type="text" name="city" id="city" placeholder="Ho Chi Minh" class="form-control" required>
                                     </div>
 
-                                    <!-- Address Part 1 -->
+                                    <!-- Address -->
                                     <div class="md-form md-outline mt-2">
                                         <label class="form-label" for="address">Address</label>
-                                        <input type="text" name="address" id="address" placeholder="House number and street name" class="form-control">
+                                        <input type="text" name="address" id="address" placeholder="House number and street name" class="form-control" required>
                                     </div>
-
-                                    <!-- Address Part 2 -->
-                                    <!-- <div class="md-form md-outline mt-2">
-                                        <label class="form-label" for="line2">Address (Line 2)</label>
-                                        <input type="text" th:field="*{line2}" name="line2" id="line2" placeholder="Apartment, suite, unit etc. (optional)" class="form-control">
-                                    </div> -->
 
                                     <!-- Additional information -->
                                     <div class="md-form md-outline mt-2">
@@ -186,19 +158,15 @@
                                 </div>
                             </div>
                             <!-- Card -->
-
                         </div>
                         <!--Grid column left-->
 
                         <!--Grid column right-->
                         <div class="col-lg-4">
-
                             <!-- Card -->
                             <div class="card mb-4">
                                 <div class="card-body">
-
                                     <h5 class="form-label">The total amount </h5>
-
                                     <ul class="list-group list-group-flush">
                                         <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
                                             Amount Payable
@@ -245,9 +213,7 @@
                                         <input type="hidden" value="<?= $vatPrice ?>" name="total">
                                         <!-- <input type="hidden" value="<?= $id ?>"  > -->
                                     </ul>
-
                                     <button type="submit" name="order" class="btn btn-primary btn-block waves-effect waves-light">Order</button>
-
                                 </div>
                             </div>
                             <!-- Card -->
@@ -271,18 +237,13 @@
                                 </div>
                             </div>
                             <!-- Card -->
-
                         </div>
                         <!--Grid column right-->
                     </div>
                     <!--Grid row-->
                 </form>
-
-
             </section>
             <!--Section: Block Content-->
-
-
         </div>
     </div>
 

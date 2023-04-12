@@ -171,32 +171,6 @@ class Product
     return $result;
   }
 
-  // Create Order
-  public static function createOrder($orderid, $userid, $name, $email, $sdt, $state, $city, $address, $addinfor, $total,)
-  {
-    global $pdo;
-    $sql = "INSERT INTO orderlist (orderid, userid ,name, email, sdt, state, city, address, addinfor, total) 
-                VALUES (:orderid, :userid, :name, :email, :sdt, :state, :city, :address, :addinfor, :total);
-                SET @num:= 0;
-                UPDATE `orderlist` SET `id` = @num:= (@num + 1);
-                ALTER TABLE `orderlist` AUTO_INCREMENT = 1;";
-    $stmt = $pdo->prepare($sql);
-
-    $stmt->bindParam(':orderid', $orderid);
-    $stmt->bindParam(':userid', $userid);
-    $stmt->bindParam(':name', $name);
-    $stmt->bindParam(':email', $email);
-    $stmt->bindParam(':sdt', $sdt);
-    $stmt->bindParam(':state', $state);
-    $stmt->bindParam(':city', $city);
-    $stmt->bindParam(':address', $address);
-    $stmt->bindParam(':addinfor', $addinfor);
-    $stmt->bindParam(':total', $total);
-
-    $stmt->execute();
-    return $orderid;
-  }
-
   public static function createReview($prdid, $msg, $name, $email)
   {
     global $pdo;

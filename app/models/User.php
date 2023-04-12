@@ -17,20 +17,6 @@ class User
     return $stmt->execute();
   }
 
-  // Edit Avatar
-  public static function editAvatar($userId, $avatar)
-  {
-    global $pdo;
-
-    $sql = "UPDATE User SET Avatar =:a WHERE Id=:i";
-    $stmt = $pdo->prepare($sql);
-
-    $stmt->bindParam(':a', $avatar);
-    $stmt->bindParam(':i', $userId);
-
-    return $stmt->execute();
-  }
-
   // Find User
   public static function find($userName)
   {
@@ -60,6 +46,7 @@ class User
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
   }
 
+  // Update User
   public static function update($id, $userName, $fullName, $pass)
   {
     global $pdo;

@@ -11,6 +11,7 @@ class AccountController
         unset($_SESSION['cart']);
         unset($_SESSION['role']);
         unset($_SESSION['orderid']);
+        unset($_SESSION['pass']);
         header('Location: ?route=login');
         exit;
     }
@@ -61,7 +62,6 @@ class AccountController
             $userName = $_POST['UserName'];
             $pass = $_POST['Pass'];
             $confirmPass = $_POST['ConfirmPass'];
-
 
             if ($pass != $confirmPass) {
                 $_SESSION['Error'] = "Mat khau xac nhan khong dung!";
@@ -130,30 +130,6 @@ class AccountController
             header('Location: ?');
         }
     }
-
-    // function editAvatar()
-    // {
-    //     if ($_SERVER['REQUEST_METHOD'] == "POST") {
-    //         //upload file
-    //         $isUploaded = $this->uploadImageFile();
-    //         if ($isUploaded == 1) {
-    //             $avatar = htmlspecialchars(basename($_FILES["avatar"]["name"]));
-    //             session_start();
-    //             $userId = $_SESSION['UserId'];
-    //             $isSuccess =  User::editAvatar($userId, $avatar);
-    //             if ($isSuccess) {
-    //                 $_SESSION['Avatar'] = $avatar;
-    //                 header('Location: ?');
-    //                 exit;
-    //             } else {
-    //                 die("Error Update User's Avatar!");
-    //             }
-    //         } else {
-    //             die("Server's Error");
-    //         }
-    //     }
-    //     require_once('../app/views/edit-avatar.php');
-    // }
 
     function uploadImageFile()
     {
